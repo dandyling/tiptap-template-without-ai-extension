@@ -1,0 +1,66 @@
+import { WebSocketStatus } from '@hocuspocus/provider'
+import { memo } from 'react'
+import { EditorUser } from '../types'
+import { cn } from '../lib/utils'
+import { getConnectionText } from '../lib/utils/getConnectionText'
+import Tooltip from './ui/Tooltip'
+
+export type EditorInfoProps = {
+  characters: number
+  words: number
+  collabState: WebSocketStatus
+  users: EditorUser[]
+}
+
+export const EditorInfo = memo(({ characters, collabState, users, words }: EditorInfoProps) => {
+  return (
+    <div className="flex items-center">
+      <div className="flex flex-col justify-center pr-4 mr-4 text-right border-r border-border/20">
+        <div>
+          {words} {words === 1 ? 'word' : 'words'}
+        </div>
+        <div className="-mt-0.5">
+          {characters} {characters === 1 ? 'character' : 'characters'}
+        </div>
+      </div>
+      <div className="flex items-center gap-2 mr-2">
+        <div
+          className={cn('w-2 h-2 rounded-full', {
+            'bg-connection-connecting': collabState === 'connecting',
+            'bg-connection-connected': collabState === 'connected',
+            'bg-connection-disconnected': collabState === 'disconnected',
+          })}
+        />
+        <span className="max-w-[4rem]">{getConnectionText(collabState)}</span>
+      </div>
+      {collabState === 'connected' && (
+        <div className="flex flex-row items-center">
+          <div className="relative flex flex-row items-center ml-3">
+            {users.map((user: EditorUser) => (
+              <div key={user.clientId} className="-ml-3">
+                <Tooltip title={user.name}>
+                  <img
+                    className="w-8 h-8 border border-white rounded-full"
+                    src={`https://api.dicebear.com/6.x/avataaars/svg?seed=${
+                      user.name
+                    }&backgroundColor=${user.color.replace('#', '')}`}
+                    alt="avatar"
+                  />
+                </Tooltip>
+              </div>
+            ))}
+            {users.length > 3 && (
+              <div className="-ml-3">
+                <div className="flex items-center justify-center w-8 h-8 font-bold text-xs leading-none border border-white bg-[#FFA2A2] rounded-full">
+                  +{users.length - 3}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+})
+
+EditorInfo.displayName = 'EditorInfo'
