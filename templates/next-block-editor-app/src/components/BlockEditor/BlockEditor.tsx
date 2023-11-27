@@ -32,8 +32,6 @@ export const BlockEditor = ({ hasCollab, ydoc, provider }: TiptapProps) => {
 
   const { editor, users, characterCount, collabState } = useBlockEditor({ hasCollab, ydoc, provider })
 
-  const editorWrapperClassNames = clsx('rounded-2xl', 'bg-editor-background/20', 'p-1.5', 'overflow-hidden')
-
   const displayedUsers = users.slice(0, 3)
 
   if (!editor) {
@@ -41,12 +39,12 @@ export const BlockEditor = ({ hasCollab, ydoc, provider }: TiptapProps) => {
   }
 
   return (
-    <div className={editorWrapperClassNames}>
-      <div className="relative rounded-2xl bg-editor-background text-editor-foreground">
-        <div className="flex flex-row items-center justify-between py-2 pl-6 pr-3 font-extrabold text-editor-foreground/40 text-xxs rounded-t-2xl bg-editor-background/30">
+    <div className="flex min-h-full">
+      <SidebarPanel isOpen={leftSidebar.isOpen} onClose={leftSidebar.close} editor={editor} />
+      <div className="relative flex flex-col flex-1 min-h-full">
+        <div className="flex flex-row items-center justify-between flex-none py-2 pl-6 pr-3 text-black bg-white border-b border-neutral-200">
           <div className="flex flex-row gap-x-1.5 items-center">
-            <WindowDecorations />
-            <div className="flex items-center gap-x-1.5 ml-4">
+            <div className="flex items-center gap-x-1.5">
               <ToolbarButton
                 tooltip={leftSidebar.isOpen ? 'Close sidebar' : 'Open sidebar'}
                 onClick={leftSidebar.toggle}
@@ -64,35 +62,23 @@ export const BlockEditor = ({ hasCollab, ydoc, provider }: TiptapProps) => {
             users={displayedUsers}
           />
         </div>
-
-        <div className="overflow-hidden">
-          {collabState === WebSocketStatus.Connected && (
-            <div ref={menuContainerRef}>
-              <DragHandleButton editor={editor} appendTo={menuContainerRef} />
-              <LinkMenu editor={editor} appendTo={menuContainerRef} />
-              <TextMenu editor={editor} appendTo={menuContainerRef} shouldHide={hideTextMenu} />
-              <ColumnsMenu editor={editor} appendTo={menuContainerRef} />
-              <TableRowMenu editor={editor} appendTo={menuContainerRef} />
-              <TableColumnMenu editor={editor} appendTo={menuContainerRef} />
-              <ImageBlockMenu editor={editor} appendTo={menuContainerRef} />
-            </div>
-          )}
-          <div className="relative flex items-stretch">
-            <SidebarPanel isOpen={leftSidebar.isOpen} onClose={leftSidebar.close} editor={editor} />
-            <div className="flex-1 w-full">
-              <EditorContent
-                editor={editor}
-                ref={editorRef}
-                className="rounded-b-lg overflow-y-auto max-h-[34rem] min-h-[60vh]"
-              />
-            </div>
-            {collabState !== WebSocketStatus.Connected && (
-              <div className="absolute top-0 left-0 z-10 flex items-center justify-center w-full h-full text-gray-300 bg-white backdrop-blur-xl bg-opacity-10">
-                <Spinner size={2} />
-              </div>
-            )}
+        <EditorContent editor={editor} ref={editorRef} className="flex-1 overflow-y-auto" />
+        {collabState !== WebSocketStatus.Connected && (
+          <div className="absolute top-0 left-0 z-10 flex items-center justify-center w-full h-full text-gray-300 bg-white backdrop-blur-xl bg-opacity-10">
+            <Spinner size={2} />
           </div>
-        </div>
+        )}
+        {collabState === WebSocketStatus.Connected && (
+          <div ref={menuContainerRef}>
+            <DragHandleButton editor={editor} appendTo={menuContainerRef} />
+            <LinkMenu editor={editor} appendTo={menuContainerRef} />
+            <TextMenu editor={editor} appendTo={menuContainerRef} shouldHide={hideTextMenu} />
+            <ColumnsMenu editor={editor} appendTo={menuContainerRef} />
+            <TableRowMenu editor={editor} appendTo={menuContainerRef} />
+            <TableColumnMenu editor={editor} appendTo={menuContainerRef} />
+            <ImageBlockMenu editor={editor} appendTo={menuContainerRef} />
+          </div>
+        )}
       </div>
     </div>
   )

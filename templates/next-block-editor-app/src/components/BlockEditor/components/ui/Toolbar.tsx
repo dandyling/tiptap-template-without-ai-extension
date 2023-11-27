@@ -10,7 +10,7 @@ export type ToolbarProps = {
 export const Toolbar = React.forwardRef<HTMLDivElement, ToolbarProps>(
   ({ shouldShowContent = true, children, isVertical = false, className, ...rest }, ref) => {
     const toolbarClassName = cn(
-      'bg-toolbar-background text-toolbar-foreground inline-flex leading-none shadow-toolbar rounded-xl gap-0.5',
+      'bg-toolbar-background text-toolbar-foreground inline-flex leading-none border border-neutral-200 shadow-sm rounded-lg gap-0.5',
       isVertical ? 'flex-col p-2' : 'flex-row p-1',
       className,
     )

@@ -26,7 +26,6 @@ export default function Document({ params }: { params: { room: string } }) {
   const searchParams = useSearchParams()
 
   const hasCollab = parseInt(searchParams.get('noCollab') as string) !== 1
-  const isDemo = parseInt(searchParams.get('demo') as string) === 1
 
   const { room } = params
 
@@ -91,21 +90,7 @@ export default function Document({ params }: { params: { room: string } }) {
         }}
       />
       {isAiLoading && <Loader label="AI is now doing its job!" />}
-      <div className="grid gap-6">
-        <BlockEditor hasCollab={hasCollab} ydoc={ydoc} provider={provider} />
-        <div className="grid gap-2 pb-6">
-          {!isDemo ? (
-            <div className="text-sm leading-normal text-center text-gray-800/70">
-              Hit the Tab key <span className="px-1 rounded bg-white/40">⇥</span> to autocomplete or choose a command
-              from the palette.
-            </div>
-          ) : null}
-          <div className="max-w-xl mx-auto text-sm leading-normal text-center text-gray-800/70">
-            In this demo, real people are collaborating in real time. The content is unmoderated. Be kind to each other
-            and don&apos;t write anything offensive or prohibited. Thank you!
-          </div>
-        </div>
-      </div>
+      <BlockEditor hasCollab={hasCollab} ydoc={ydoc} provider={provider} />
     </EditorContext.Provider>
   )
 }

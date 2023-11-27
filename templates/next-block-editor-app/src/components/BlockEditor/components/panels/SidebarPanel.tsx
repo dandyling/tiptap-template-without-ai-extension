@@ -12,8 +12,8 @@ export const SidebarPanel = memo(
     }, [onClose])
 
     const windowClassName = cn(
-      'absolute top-0 left-0 bg-white lg:bg-white/30 lg:backdrop-blur-xl h-full lg:h-auto lg:relative z-[999] w-0 duration-300 transition-all',
-      isOpen && 'w-64 lg:mr-24',
+      'absolute top-0 left-0 bg-white lg:bg-white/30 lg:backdrop-blur-xl h-full lg:h-auto lg:relative z-[999] border-r border-r-neutral-200 w-0 duration-300 transition-all',
+      isOpen && 'w-80',
     )
 
     return (

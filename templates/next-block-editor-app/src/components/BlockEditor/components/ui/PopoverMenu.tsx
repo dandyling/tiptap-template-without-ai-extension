@@ -44,7 +44,7 @@ export const Menu = ({
         <Popover.Portal className="z-9999">
           <Popover.Content
             sideOffset={8}
-            className="min-w-[15rem] p-2 bg-white rounded-xl shadow-toolbar flex flex-col gap-0.5 max-h-80 overflow-auto z-[9999]"
+            className="min-w-[15rem] p-2 bg-white rounded-lg shadow-sm border border-neutral-200 flex flex-col gap-0.5 max-h-80 overflow-auto z-[9999]"
           >
             {children}
           </Popover.Content>
@@ -52,7 +52,7 @@ export const Menu = ({
       ) : (
         <Popover.Content
           sideOffset={8}
-          className="min-w-[15rem] p-2 bg-white rounded-xl shadow-toolbar flex flex-col gap-0.5 max-h-80 overflow-auto"
+          className="min-w-[15rem] p-2 bg-white rounded-xl border border-neutral-200 shadow-sm flex flex-col gap-0.5 max-h-80 overflow-auto"
         >
           {children}
         </Popover.Content>
@@ -81,11 +81,11 @@ export const Item = ({
   isActive?: boolean
 }) => {
   const className = cn(
-    'flex items-center gap-2 p-1.5 text-sm font-medium text-gray-500 text-left bg-transparent w-full rounded',
+    'flex items-center gap-2 p-1.5 text-sm font-medium text-neutral-500 text-left bg-transparent w-full rounded',
     !isActive && !disabled,
-    'hover:bg-gray-100 hover:text-gray-800',
-    isActive && !disabled && 'bg-gray-100 text-gray-800',
-    disabled && 'text-gray-400 cursor-not-allowed',
+    'hover:bg-neutral-100 hover:text-neutral-800',
+    isActive && !disabled && 'bg-neutral-100 text-neutral-800',
+    disabled && 'text-neutral-400 cursor-not-allowed',
   )
 
   const IconComponent = icon ? icons[icon] : null
@@ -108,14 +108,14 @@ export type CategoryTitle = {
 
 export const CategoryTitle = ({ children }: CategoryTitle) => {
   return (
-    <div className="mt-4 first:mt-1.5 mb-1.5 text-[0.625rem] font-medium text-gray-400 uppercase select-none px-1">
+    <div className="mt-4 first:mt-1.5 mb-1.5 text-[0.625rem] font-medium text-neutral-400 uppercase select-none px-1">
       {children}
     </div>
   )
 }
 
 export const Divider = forwardRef<HTMLHRElement>((props, ref) => {
-  return <hr {...props} ref={ref} className="my-1 border-gray-200" />
+  return <hr {...props} ref={ref} className="my-1 border-neutral-200" />
 })
 
 Divider.displayName = 'Divider'

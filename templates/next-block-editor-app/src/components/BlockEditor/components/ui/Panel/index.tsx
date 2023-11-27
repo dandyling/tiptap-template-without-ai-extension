@@ -11,7 +11,7 @@ export type PanelProps = {
 export const Panel = forwardRef<HTMLDivElement, PanelProps>(
   ({ asChild, className, children, spacing, noShadow, ...rest }, ref) => {
     const panelClass = cn(
-      'bg-toolbar-background shadow-xl rounded-lg text-toolbar-foreground p-2',
+      'bg-white shadow-sm border border-neutral-200 rounded-lg text-neutral-800 p-2',
       spacing === 'small' && 'p-[0.2rem]',
       noShadow && 'shadow-none',
       className,

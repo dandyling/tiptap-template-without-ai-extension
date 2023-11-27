@@ -73,7 +73,7 @@
       }
 
       &.selected {
-        @apply bg-black/30 border-black/30 shadow-toolbar;
+        @apply bg-black/30 border-black/30 shadow-sm;
 
         &::before {
           @apply border-b-2 border-dotted;
@@ -108,7 +108,7 @@
       }
 
       &.selected {
-        @apply bg-black/30 border-black/30 shadow-toolbar;
+        @apply bg-black/30 border-black/30 shadow-sm;
 
         &::before {
           @apply border-l-2 border-dotted;

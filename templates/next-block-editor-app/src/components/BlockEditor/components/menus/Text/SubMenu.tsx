@@ -38,7 +38,7 @@ export const SubMenu = ({ editor }: { editor: Editor }) => {
         </ToolbarButton>
       </Popover.Trigger>
       <Popover.Content
-        className="flex items-stretch gap-1 p-1 bg-white rounded-lg shadow-2xl"
+        className="flex items-stretch gap-1 p-1 bg-white border rounded-lg shadow-sm border-neutral-200"
         side="top"
         sideOffset={8}
       >
