@@ -158,7 +158,7 @@ export const AiWriterView = ({ editor, node, getPos, deleteNode }: NodeViewWrapp
             <>
               <PanelHeadline>Preview</PanelHeadline>
               <div
-                className="bg-white border-l-4 border-black/10 text-black text-base max-h-[14rem] mb-4 ml-2.5 overflow-y-auto px-4 relative"
+                className="bg-white border-l-4 border-neutral-100 text-black text-base max-h-[14rem] mb-4 ml-2.5 overflow-y-auto px-4 relative"
                 dangerouslySetInnerHTML={{ __html: previewText }}
               />
             </>

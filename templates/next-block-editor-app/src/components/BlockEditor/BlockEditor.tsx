@@ -39,9 +39,9 @@ export const BlockEditor = ({ hasCollab, ydoc, provider }: TiptapProps) => {
   }
 
   return (
-    <div className="flex min-h-full">
+    <div className="flex h-full">
       <SidebarPanel isOpen={leftSidebar.isOpen} onClose={leftSidebar.close} editor={editor} />
-      <div className="relative flex flex-col flex-1 min-h-full">
+      <div className="relative flex flex-col flex-1 h-full overflow-hidden">
         <div className="flex flex-row items-center justify-between flex-none py-2 pl-6 pr-3 text-black bg-white border-b border-neutral-200">
           <div className="flex flex-row gap-x-1.5 items-center">
             <div className="flex items-center gap-x-1.5">
