@@ -10,7 +10,7 @@ interface EmbedInputProps {
 export const EmbedInputView = ({ node: { attrs } }: EmbedInputProps) => {
   const service = attrs.service ?? undefined
 
-  const iconClass = 'w-4 h-4 text-dark opacity-50'
+  const iconClass = 'w-4 h-4 text-black opacity-50'
 
   return (
     <NodeViewWrapper data-service={service} data-drag-handle>

@@ -36,7 +36,7 @@ export const ImageUploader = ({ onUpload }: { onUpload: (url: string) => void })
       onDragLeave={onDragLeave}
       contentEditable={false}
     >
-      <Icon name="Image" className="w-12 h-12 mb-4 text-dark opacity-20" />
+      <Icon name="Image" className="w-12 h-12 mb-4 text-black opacity-20" />
       <div className="flex flex-col items-center justify-center gap-2">
         <div className="text-sm font-medium text-center text-gray-400">
           {draggedInside ? 'Drop image here' : 'Drag and drop or'}
