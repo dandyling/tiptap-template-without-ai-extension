@@ -10,6 +10,7 @@ After that
 
 ```bash
 # Copy the example env file and make the required configuration changes in the .env file
+# Make sure to add your Tiptap cloud token and app IDs to the .env file
 cp .env.example .env
 
 # Install dependencies
