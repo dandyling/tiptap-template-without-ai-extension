@@ -35,7 +35,13 @@ export const TextMenu = ({ editor }: TextMenuProps) => {
   const isVisible = states.shouldShow({ view: editor.view, from: editor.state.selection.from })
 
   return (
-    <BubbleMenu editor={editor} pluginKey="textMenu" shouldShow={states.shouldShow} updateDelay={100}>
+    <BubbleMenu
+      tippyOptions={{ popperOptions: { placement: 'top-start' } }}
+      editor={editor}
+      pluginKey="textMenu"
+      shouldShow={states.shouldShow}
+      updateDelay={100}
+    >
       {isVisible ? (
         <Toolbar.Wrapper>
           <AIDropdown

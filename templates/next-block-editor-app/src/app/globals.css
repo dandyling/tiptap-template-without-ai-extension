@@ -13,6 +13,21 @@
   }
 }
 
+input::placeholder,
+textarea::placeholder {
+  @apply text-black/50 dark:text-white/40;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  @apply text-black/40 dark:text-white/40;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  @apply text-black/40 dark:text-white/40;
+}
+
 .react-colorful {
   width: 100% !important;
 }
