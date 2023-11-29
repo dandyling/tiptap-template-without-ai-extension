@@ -1,8 +1,8 @@
 import { FormEvent, memo, useCallback, useMemo, useState } from 'react'
 import * as Popover from '@radix-ui/react-popover'
-import { ToolbarButton } from '../ui/ToolbarButton'
 import { Icon } from '../ui/Icon'
 import { Button } from '../ui/Button'
+import { Toolbar } from '../ui/Toolbar'
 
 export type OnLinkChangeFn = (link: string) => void // eslint-disable-line no-unused-vars
 
@@ -54,9 +54,9 @@ export const LinkEditor = memo(({ link, onLinkChange }: LinkEditorProps) => {
   return (
     <Popover.Root onOpenChange={setIsOpen}>
       <Popover.Trigger asChild>
-        <ToolbarButton active={isOpen} tooltip={!isOpen ? 'Link' : ''}>
+        <Toolbar.Button active={isOpen} tooltip={!isOpen ? 'Link' : ''}>
           <Icon name="Link2" />
-        </ToolbarButton>
+        </Toolbar.Button>
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Content

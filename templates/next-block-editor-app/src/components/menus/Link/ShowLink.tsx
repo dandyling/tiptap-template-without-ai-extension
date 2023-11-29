@@ -3,7 +3,7 @@ import React, { useCallback, useState } from 'react'
 
 import { Button } from '@/components/ui/Button'
 import { Icon } from '@/components/ui/Icon'
-import { Divider, Toolbar } from '@/components/ui/Toolbar'
+import { Toolbar } from '@/components/ui/Toolbar'
 import { Tooltip } from '@/components/ui/Tooltip'
 import { MenuProps } from '../types'
 import { EditLink } from './EditLink'
@@ -79,7 +79,7 @@ export const LinkMenu = ({ editor, appendTo }: MenuProps): JSX.Element => {
         },
       }}
     >
-      <Toolbar shouldShowContent={shouldShow()}>
+      <Toolbar.Wrapper shouldShowContent={shouldShow()}>
         <div className="flex max-w-[18rem]">
           {showEdit ? (
             <EditLink link={link} onSetLink={onSetLink} onUnsetLink={onUnsetLink} onBack={onHideEdit} />
@@ -107,7 +107,7 @@ export const LinkMenu = ({ editor, appendTo }: MenuProps): JSX.Element => {
                     <Icon name="Pencil" />
                   </Button>
                 </Tooltip>
-                <Divider />
+                <Toolbar.Divider />
                 <Tooltip title="Remove link">
                   <Button
                     // eslint-disable-next-line react/jsx-props-no-spreading
@@ -122,7 +122,7 @@ export const LinkMenu = ({ editor, appendTo }: MenuProps): JSX.Element => {
             </>
           )}
         </div>
-      </Toolbar>
+      </Toolbar.Wrapper>
     </BaseBubbleMenu>
   )
 }

@@ -3,8 +3,7 @@ import React, { useCallback, useRef } from 'react'
 import { Instance, sticky } from 'tippy.js'
 import { v4 as uuid } from 'uuid'
 
-import { Divider, Toolbar } from '@/components/ui/Toolbar'
-import { ToolbarButton } from '@/components/ui/ToolbarButton'
+import { Toolbar } from '@/components/ui/Toolbar'
 import { Icon } from '@/components/ui/Icon'
 import { ImageBlockWidth } from './ImageBlockWidth'
 import { getRenderContainer } from '@/components/menus/utils'
@@ -68,31 +67,31 @@ export const ImageBlockMenu = ({ editor, appendTo }: MenuProps): JSX.Element => 
         sticky: 'popper',
       }}
     >
-      <Toolbar shouldShowContent={shouldShow()} ref={menuRef}>
-        <ToolbarButton
+      <Toolbar.Wrapper shouldShowContent={shouldShow()} ref={menuRef}>
+        <Toolbar.Button
           tooltip="Align image left"
           active={editor.isActive('imageBlock', { align: 'left' })}
           onClick={onAlignImageLeft}
         >
           <Icon name="AlignHorizontalDistributeStart" />
-        </ToolbarButton>
-        <ToolbarButton
+        </Toolbar.Button>
+        <Toolbar.Button
           tooltip="Align image center"
           active={editor.isActive('imageBlock', { align: 'center' })}
           onClick={onAlignImageCenter}
         >
           <Icon name="AlignHorizontalDistributeCenter" />
-        </ToolbarButton>
-        <ToolbarButton
+        </Toolbar.Button>
+        <Toolbar.Button
           tooltip="Align image right"
           active={editor.isActive('imageBlock', { align: 'right' })}
           onClick={onAlignImageRight}
         >
           <Icon name="AlignHorizontalDistributeEnd" />
-        </ToolbarButton>
-        <Divider />
+        </Toolbar.Button>
+        <Toolbar.Divider />
         <ImageBlockWidth onChange={onWidthChange} value={parseInt(editor.getAttributes('imageBlock').width)} />
-      </Toolbar>
+      </Toolbar.Wrapper>
     </BaseBubbleMenu>
   )
 }

@@ -1,7 +1,6 @@
 import { memo, useCallback, useEffect, useState } from 'react'
-import { ToolbarButton } from '../ui/ToolbarButton'
 import Tippy from '@tippyjs/react/headless'
-import Toolbar from '../ui/Toolbar'
+import { Toolbar } from '../ui/Toolbar'
 import { ColorButton } from '../ui/ColorButton'
 import { HexColorPicker } from 'react-colorful'
 import { Icon } from '../ui/Icon'
@@ -75,7 +74,7 @@ export const ColorPicker = memo(({ onColorChange, children, color, tooltip }: Co
 
   const renderTippyContent = useCallback(() => {
     return (
-      <Toolbar>
+      <Toolbar.Wrapper>
         <div className="flex flex-col gap-2">
           <HexColorPicker className="w-full" color={color || ''} onChange={onColorChange} />
           <input
@@ -95,12 +94,12 @@ export const ColorPicker = memo(({ onColorChange, children, color, tooltip }: Co
                 onColorChange={onColorChange}
               />
             ))}
-            <ToolbarButton tooltip="Reset color to default" onClick={clearColor}>
+            <Toolbar.Button tooltip="Reset color to default" onClick={clearColor}>
               <Icon name="Undo" />
-            </ToolbarButton>
+            </Toolbar.Button>
           </div>
         </div>
-      </Toolbar>
+      </Toolbar.Wrapper>
     )
   }, [onColorChange, handleColorChange, handleColorUpdate, clearColor, colorInputValue, color])
 
@@ -114,7 +113,7 @@ export const ColorPicker = memo(({ onColorChange, children, color, tooltip }: Co
     >
       <div>
         <Tooltip title={!state.colorPickerOpen ? tooltip : ''}>
-          <ToolbarButton active={state.colorPickerOpen || !!color}>{children}</ToolbarButton>
+          <Toolbar.Button active={state.colorPickerOpen || !!color}>{children}</Toolbar.Button>
         </Tooltip>
       </div>
     </Tippy>

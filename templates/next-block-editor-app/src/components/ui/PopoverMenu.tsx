@@ -1,8 +1,9 @@
 import * as Popover from '@radix-ui/react-popover'
-import { ToolbarButton } from './ToolbarButton'
 import { cn } from '@/lib/utils'
 import { icons } from 'lucide-react'
 import { forwardRef } from 'react'
+import { Surface } from './Surface'
+import { Toolbar } from './Toolbar'
 
 export const Trigger = Popover.Trigger
 export const Portal = Popover.Portal
@@ -35,26 +36,24 @@ export const Menu = ({
         <Trigger asChild>{trigger}</Trigger>
       ) : (
         <Trigger asChild>
-          <ToolbarButton className={triggerClassName} tooltip={!isOpen ? tooltip : ''}>
+          <Toolbar.Button className={triggerClassName} tooltip={!isOpen ? tooltip : ''}>
             {trigger}
-          </ToolbarButton>
+          </Toolbar.Button>
         </Trigger>
       )}
       {withPortal ? (
         <Popover.Portal className="z-9999">
-          <Popover.Content
-            sideOffset={8}
-            className="min-w-[15rem] p-2 bg-white rounded-lg shadow-sm border border-neutral-200 flex flex-col gap-0.5 max-h-80 overflow-auto z-[9999]"
-          >
-            {children}
+          <Popover.Content asChild sideOffset={8}>
+            <Surface className="min-w-[15rem] p-2 flex flex-col gap-0.5 max-h-80 overflow-auto z-[9999]">
+              {children}
+            </Surface>
           </Popover.Content>
         </Popover.Portal>
       ) : (
-        <Popover.Content
-          sideOffset={8}
-          className="min-w-[15rem] p-2 bg-white rounded-xl border border-neutral-200 shadow-sm flex flex-col gap-0.5 max-h-80 overflow-auto"
-        >
-          {children}
+        <Popover.Content asChild sideOffset={8}>
+          <Surface className="min-w-[15rem] p-2 flex flex-col gap-0.5 max-h-80 overflow-auto z-[9999]">
+            {children}
+          </Surface>
         </Popover.Content>
       )}
     </Popover.Root>
@@ -83,9 +82,9 @@ export const Item = ({
   const className = cn(
     'flex items-center gap-2 p-1.5 text-sm font-medium text-neutral-500 text-left bg-transparent w-full rounded',
     !isActive && !disabled,
-    'hover:bg-neutral-100 hover:text-neutral-800',
-    isActive && !disabled && 'bg-neutral-100 text-neutral-800',
-    disabled && 'text-neutral-400 cursor-not-allowed',
+    'hover:bg-neutral-100 hover:text-neutral-800 dark:hover:bg-neutral-900 dark:hover:text-neutral-200',
+    isActive && !disabled && 'bg-neutral-100 text-neutral-800 dark:bg-neutral-900 dark:text-neutral-200',
+    disabled && 'text-neutral-400 cursor-not-allowed dark:text-neutral-600',
   )
 
   const IconComponent = icon ? icons[icon] : null
@@ -108,14 +107,14 @@ export type CategoryTitle = {
 
 export const CategoryTitle = ({ children }: CategoryTitle) => {
   return (
-    <div className="mt-4 first:mt-1.5 mb-1.5 text-[0.625rem] font-medium text-neutral-400 uppercase select-none px-1">
+    <div className="mt-4 first:mt-1.5 mb-1.5 text-[0.625rem] font-medium text-neutral-400 dark:text-neutral-600 uppercase select-none px-1">
       {children}
     </div>
   )
 }
 
 export const Divider = forwardRef<HTMLHRElement>((props, ref) => {
-  return <hr {...props} ref={ref} className="my-1 border-neutral-200" />
+  return <hr {...props} ref={ref} className="my-1 border-neutral-200 dark:border-neutral-800" />
 })
 
 Divider.displayName = 'Divider'

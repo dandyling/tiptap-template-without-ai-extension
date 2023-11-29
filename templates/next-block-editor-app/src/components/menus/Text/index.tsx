@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useRef } from 'react'
 import { Instance } from 'tippy.js'
 
 import { Icon } from '@/components/ui/Icon'
-import { Divider, Toolbar } from '@/components/ui/Toolbar'
+import { Toolbar } from '@/components/ui/Toolbar'
 import { MenuProps, ShouldShowProps } from '../types'
 import { forceUpdateTippy } from '../utils/forceUpdateTippy'
 import { isCustomNodeSelected } from '../utils/isCustomNodeSelected'
@@ -17,7 +17,6 @@ import { FontFamilyPicker } from '@/components/toolbar/FontFamilyPicker'
 import { BlockPicker, BlockPickerOptions } from '@/components/toolbar/BlockPicker'
 import { AIDropdown } from '@/components/toolbar/AIDropdown'
 import { Language, Tone } from '@tiptap-pro/extension-ai'
-import { ToolbarButton } from '@/components/ui/ToolbarButton'
 import ToggleCodeButton from '@/components/toolbar/ToggleCodeButton'
 
 export const TextMenu = ({ editor, shouldHide }: MenuProps): JSX.Element => {
@@ -273,7 +272,7 @@ export const TextMenu = ({ editor, shouldHide }: MenuProps): JSX.Element => {
   }
 
   const content = (
-    <Toolbar>
+    <Toolbar.Wrapper>
       <AIDropdown
         onCompleteSentence={handleComplete}
         onEmojify={handleEmojify}
@@ -286,7 +285,7 @@ export const TextMenu = ({ editor, shouldHide }: MenuProps): JSX.Element => {
         onChangeTone={handleChangeTone}
         onSummarize={handleSummarize}
       />
-      <Divider />
+      <Toolbar.Divider />
       {!isBlockquoteFigure && (
         <>
           <BlockPicker options={blockPickerOptions} />
@@ -296,7 +295,7 @@ export const TextMenu = ({ editor, shouldHide }: MenuProps): JSX.Element => {
           {editor.can().setFontSize('16px') && (
             <FontSizePicker onChange={handleFontSizeChange} value={editor.getAttributes('textStyle').fontSize} />
           )}
-          <Divider />
+          <Toolbar.Divider />
         </>
       )}
       <TextFormatting
@@ -316,10 +315,10 @@ export const TextMenu = ({ editor, shouldHide }: MenuProps): JSX.Element => {
         disabled={!editor.can().toggleCode()}
         showTooltip
       />
-      <ToolbarButton onClick={handleSetCodeBlock} active={editor.isActive('codeBlock')}>
+      <Toolbar.Button onClick={handleSetCodeBlock} active={editor.isActive('codeBlock')}>
         <Icon name="SquareCode" />
-      </ToolbarButton>
-      <Divider />
+      </Toolbar.Button>
+      <Toolbar.Divider />
       <ColorPicker
         tooltip="Highlight text"
         color={editor.getAttributes('highlight')?.color}
@@ -336,13 +335,13 @@ export const TextMenu = ({ editor, shouldHide }: MenuProps): JSX.Element => {
       </ColorPicker>
       {!isBlockquoteFigure && (
         <>
-          <Divider />
+          <Toolbar.Divider />
           <div className="ml-1">
             <SubMenu editor={editor} />
           </div>
         </>
       )}
-    </Toolbar>
+    </Toolbar.Wrapper>
   )
 
   return (

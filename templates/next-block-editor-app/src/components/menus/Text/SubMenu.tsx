@@ -1,8 +1,7 @@
 import * as Popover from '@radix-ui/react-popover'
 import { DotsHorizontalIcon } from '@radix-ui/react-icons'
 import { Editor } from '@tiptap/react'
-import { Divider } from '@/components/ui/Toolbar'
-import { ToolbarButton } from '@/components/ui/ToolbarButton'
+import { Toolbar } from '@/components/ui/Toolbar'
 import { useCallback, useState } from 'react'
 import { Icon } from '@/components/ui/Icon'
 
@@ -33,59 +32,57 @@ export const SubMenu = ({ editor }: { editor: Editor }) => {
   return (
     <Popover.Root open={isOpen} onOpenChange={setIsOpen}>
       <Popover.Trigger asChild>
-        <ToolbarButton tooltip={!isOpen ? 'More options' : undefined} className="data-[state=open]:bg-gray-100">
+        <Toolbar.Button tooltip={!isOpen ? 'More options' : undefined} className="data-[state=open]:bg-gray-100">
           <DotsHorizontalIcon className="block w-4 h-4" />
-        </ToolbarButton>
+        </Toolbar.Button>
       </Popover.Trigger>
-      <Popover.Content
-        className="flex items-stretch gap-1 p-1 bg-white border rounded-lg shadow-sm border-neutral-200"
-        side="top"
-        sideOffset={8}
-      >
-        <ToolbarButton
-          active={isSuperscript}
-          tooltip="Superscript"
-          tooltipShortcut={['Mod', '.']}
-          onClick={onSuperscript}
-        >
-          <Icon name="Superscript" />
-        </ToolbarButton>
-        <ToolbarButton active={isSubscript} tooltip="Subscript" tooltipShortcut={['Mod', ',']} onClick={onSubscript}>
-          <Icon name="Subscript" />
-        </ToolbarButton>
-        <Divider />
-        <ToolbarButton
-          active={isAlignLeft}
-          tooltip="Align left"
-          tooltipShortcut={['Shift', 'Mod', 'L']}
-          onClick={onAlignLeft}
-        >
-          <Icon name="AlignLeft" />
-        </ToolbarButton>
-        <ToolbarButton
-          active={isAlignCenter}
-          tooltip="Align center"
-          tooltipShortcut={['Shift', 'Mod', 'E']}
-          onClick={onAlignCenter}
-        >
-          <Icon name="AlignCenter" />
-        </ToolbarButton>
-        <ToolbarButton
-          active={isAlignRight}
-          tooltip="Align right"
-          tooltipShortcut={['Shift', 'Mod', 'R']}
-          onClick={onAlignRight}
-        >
-          <Icon name="AlignRight" />
-        </ToolbarButton>
-        <ToolbarButton
-          active={isAlignJustify}
-          tooltip="Justify text"
-          tooltipShortcut={['Shift', 'Mod', 'J']}
-          onClick={onAlignJustify}
-        >
-          <Icon name="AlignJustify" />
-        </ToolbarButton>
+      <Popover.Content side="top" sideOffset={8} asChild>
+        <Toolbar.Wrapper>
+          <Toolbar.Button
+            active={isSuperscript}
+            tooltip="Superscript"
+            tooltipShortcut={['Mod', '.']}
+            onClick={onSuperscript}
+          >
+            <Icon name="Superscript" />
+          </Toolbar.Button>
+          <Toolbar.Button active={isSubscript} tooltip="Subscript" tooltipShortcut={['Mod', ',']} onClick={onSubscript}>
+            <Icon name="Subscript" />
+          </Toolbar.Button>
+          <Toolbar.Divider />
+          <Toolbar.Button
+            active={isAlignLeft}
+            tooltip="Align left"
+            tooltipShortcut={['Shift', 'Mod', 'L']}
+            onClick={onAlignLeft}
+          >
+            <Icon name="AlignLeft" />
+          </Toolbar.Button>
+          <Toolbar.Button
+            active={isAlignCenter}
+            tooltip="Align center"
+            tooltipShortcut={['Shift', 'Mod', 'E']}
+            onClick={onAlignCenter}
+          >
+            <Icon name="AlignCenter" />
+          </Toolbar.Button>
+          <Toolbar.Button
+            active={isAlignRight}
+            tooltip="Align right"
+            tooltipShortcut={['Shift', 'Mod', 'R']}
+            onClick={onAlignRight}
+          >
+            <Icon name="AlignRight" />
+          </Toolbar.Button>
+          <Toolbar.Button
+            active={isAlignJustify}
+            tooltip="Justify text"
+            tooltipShortcut={['Shift', 'Mod', 'J']}
+            onClick={onAlignJustify}
+          >
+            <Icon name="AlignJustify" />
+          </Toolbar.Button>
+        </Toolbar.Wrapper>
       </Popover.Content>
     </Popover.Root>
   )

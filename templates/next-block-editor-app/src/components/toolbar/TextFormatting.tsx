@@ -1,6 +1,6 @@
 import { memo } from 'react'
-import { ToolbarButton } from '../ui/ToolbarButton'
 import { Icon } from '../ui/Icon'
+import { Toolbar } from '../ui/Toolbar'
 
 export type TextFormattingProps = {
   isBold?: boolean
@@ -26,28 +26,28 @@ export const TextFormatting = memo(
   }: TextFormattingProps) => {
     return (
       <>
-        <ToolbarButton tooltip="Bold" tooltipShortcut={['Mod', 'B']} onClick={toggleBold} active={isBold}>
+        <Toolbar.Button tooltip="Bold" tooltipShortcut={['Mod', 'B']} onClick={toggleBold} active={isBold}>
           <Icon name="Bold" className="w-4 h-4" />
-        </ToolbarButton>
-        <ToolbarButton tooltip="Italic" tooltipShortcut={['Mod', 'I']} onClick={toggleItalic} active={isItalic}>
+        </Toolbar.Button>
+        <Toolbar.Button tooltip="Italic" tooltipShortcut={['Mod', 'I']} onClick={toggleItalic} active={isItalic}>
           <Icon name="Italic" className="w-4 h-4" />
-        </ToolbarButton>
-        <ToolbarButton
+        </Toolbar.Button>
+        <Toolbar.Button
           tooltip="Underline"
           tooltipShortcut={['Mod', 'U']}
           onClick={toggleUnderline}
           active={isUnderline}
         >
           <Icon name="Underline" className="w-4 h-4" />
-        </ToolbarButton>
-        <ToolbarButton
+        </Toolbar.Button>
+        <Toolbar.Button
           tooltip="Strikethrough"
           tooltipShortcut={['Shift', 'Mod', 'X']}
           onClick={toggleStrikethrough}
           active={isStrikethrough}
         >
           <Icon name="Strikethrough" className="w-4 h-4" />
-        </ToolbarButton>
+        </Toolbar.Button>
       </>
     )
   },
