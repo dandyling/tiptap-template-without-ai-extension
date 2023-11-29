@@ -1,15 +1,12 @@
 'use client'
 
 import { TiptapCollabProvider } from '@hocuspocus/provider'
+import 'iframe-resizer/js/iframeResizer.contentWindow'
 import { useSearchParams } from 'next/navigation'
 import { useEffect, useLayoutEffect, useMemo, useState } from 'react'
 import * as Y from 'yjs'
-import 'iframe-resizer/js/iframeResizer.contentWindow'
-import { Toaster } from 'react-hot-toast'
 
 import { BlockEditor } from '@/components/BlockEditor'
-import { EditorContext } from '@/context/EditorContext'
-import { Loader } from '@/components/ui/Loader'
 
 export interface AiState {
   isAiLoading: boolean
@@ -17,10 +14,6 @@ export interface AiState {
 }
 
 export default function Document({ params }: { params: { room: string } }) {
-  // const translation = useAiTranslation('Hallo wie geht’s')
-  const [isAiLoading, setIsAiLoading] = useState<boolean>(false)
-  const [aiError, setAiError] = useState<string | null>(null)
-
   const [provider, setProvider] = useState<TiptapCollabProvider | null>(null)
   const [token, setToken] = useState<string | null>(null)
   const searchParams = useSearchParams()
@@ -65,32 +58,7 @@ export default function Document({ params }: { params: { room: string } }) {
     }
   }, [setProvider, token, ydoc, room, hasCollab])
 
-  const providerValue = useMemo(
-    () => ({
-      isAiLoading,
-      aiError,
-      setIsAiLoading,
-      setAiError,
-    }),
-    [isAiLoading, aiError, setIsAiLoading, setAiError],
-  )
-
   if (hasCollab && (!token || !provider)) return
 
-  return (
-    <EditorContext.Provider value={providerValue}>
-      <Toaster
-        position="bottom-right"
-        reverseOrder={false}
-        toastOptions={{
-          duration: 15000,
-          style: {
-            boxShadow: 'none',
-          },
-        }}
-      />
-      {isAiLoading && <Loader label="AI is now doing its job!" />}
-      <BlockEditor hasCollab={hasCollab} ydoc={ydoc} provider={provider} />
-    </EditorContext.Provider>
-  )
+  return <BlockEditor hasCollab={hasCollab} ydoc={ydoc} provider={provider} />
 }
