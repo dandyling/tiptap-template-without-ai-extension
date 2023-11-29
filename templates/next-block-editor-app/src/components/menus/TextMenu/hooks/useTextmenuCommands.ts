@@ -31,6 +31,7 @@ export const useTextmenuCommands = (editor: Editor) => {
   const onTldr = useCallback(() => editor.chain().focus().aiTldr().run(), [editor])
   const onTone = useCallback((tone: string) => editor.chain().focus().aiAdjustTone(tone).run(), [editor])
   const onTranslate = useCallback((language: string) => editor.chain().focus().aiTranslate(language).run(), [editor])
+  const onLink = useCallback((url: string) => editor.chain().focus().setLink({ href: url }).run(), [editor])
 
   const onSetFont = useCallback(
     (font: string) => {
@@ -80,5 +81,6 @@ export const useTextmenuCommands = (editor: Editor) => {
     onTldr,
     onTone,
     onTranslate,
+    onLink,
   }
 }

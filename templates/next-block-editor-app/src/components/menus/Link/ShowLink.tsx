@@ -85,11 +85,11 @@ export const LinkMenu = ({ editor, appendTo }: MenuProps): JSX.Element => {
             <EditLink link={link} onSetLink={onSetLink} onUnsetLink={onUnsetLink} onBack={onHideEdit} />
           ) : (
             <>
-              <span className="self-center text-black leading-[0] ml-1.5">
+              <span className="self-center text-black dark:text-white leading-[0] ml-1.5">
                 <Icon name="Globe" />
               </span>
               <a
-                className="self-center text-black flex-1 text-sm font-medium leading-none mx-2 max-w-[25rem] min-w-[10rem] overflow-hidden underline overflow-ellipsis whitespace-nowrap"
+                className="self-center text-black dark:text-white flex-1 text-sm font-medium leading-none mx-2 max-w-[25rem] min-w-[10rem] overflow-hidden underline overflow-ellipsis whitespace-nowrap"
                 href={link}
                 title={link}
                 target="_blank"

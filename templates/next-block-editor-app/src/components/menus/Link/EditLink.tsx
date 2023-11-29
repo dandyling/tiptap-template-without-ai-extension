@@ -57,11 +57,11 @@ export const EditLink = ({
 
   return (
     <div className="flex items-center flex-1 min-w-[18rem] text-white">
-      <span className="leading-[0] m-1.5 mr-0 text-black/60">
+      <span className="leading-[0] m-1.5 mr-0 text-black/60 dark:text-white/60">
         <Icon name="Link" />
       </span>
       <input
-        className="max-w-[25rem] bg-transparent border-0 caret-black text-black flex-1 text-sm font-medium leading-none outline-none px-2 focus:border-0 focus:shadow-none"
+        className="max-w-[25rem] bg-transparent border-0 caret-black dark:caret-white text-black dark:text-white flex-1 text-sm font-medium leading-none outline-none px-2 focus:border-0 focus:shadow-none"
         type="text"
         value={newLink}
         onChange={onChange}
