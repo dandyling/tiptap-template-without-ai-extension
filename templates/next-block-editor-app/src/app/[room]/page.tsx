@@ -8,8 +8,8 @@ import 'iframe-resizer/js/iframeResizer.contentWindow'
 import { Toaster } from 'react-hot-toast'
 
 import { BlockEditor } from '@/components/BlockEditor'
-import { EditorContext } from '@/components/BlockEditor/context/EditorContext'
-import { Loader } from '@/components/BlockEditor/components/ui/Loader'
+import { EditorContext } from '@/context/EditorContext'
+import { Loader } from '@/components/ui/Loader'
 
 export interface AiState {
   isAiLoading: boolean

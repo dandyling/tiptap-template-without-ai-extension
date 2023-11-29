@@ -5,32 +5,29 @@ import clsx from 'clsx'
 import { EditorContent, PureEditorContent } from '@tiptap/react'
 import { WebSocketStatus } from '@hocuspocus/provider'
 
-import { DragHandleButton } from './components/ui/DragHandleButton'
-import { LinkMenu, TextMenu } from './components/menus'
-import { ColumnsMenu } from './extensions/MultiColumn/menus/ColumnsMenu'
-import { TableColumnMenu, TableRowMenu } from './extensions/Table/menus'
-import { ImageBlockMenu } from './extensions/ImageBlock/components/ImageBlockMenu'
+import { DragHandleButton } from '../ui/DragHandleButton'
+import { LinkMenu, TextMenu } from '@/components/menus'
 
-import { useBlockEditor } from './useBlockEditor'
+import { useBlockEditor } from './hooks/useBlockEditor'
 
-import './styles/index.css'
+import '@/styles/index.css'
 
-import { Spinner } from './components/ui/Spinner'
-import { SidebarPanel } from './components/panels/SidebarPanel'
-import { ToolbarButton } from './components/ui/ToolbarButton'
-import { Icon } from './components/ui/Icon'
-import { useSidebar } from './lib/hooks/useSidebar'
+import { Spinner } from '../ui/Spinner'
+import { SidebarPanel } from '../panels/SidebarPanel'
+import { ToolbarButton } from '../ui/ToolbarButton'
+import { Icon } from '../ui/Icon'
 import { TiptapProps } from './types'
-import { WindowDecorations } from './components/WindowDecorations'
 import { EditorInfo } from './components/EditorInfo'
+import { ColumnsMenu } from '@/extensions/MultiColumn/menus'
+import { TableColumnMenu, TableRowMenu } from '@/extensions/Table/menus'
+import ImageBlockMenu from '@/extensions/ImageBlock/components/ImageBlockMenu'
 
 export const BlockEditor = ({ hasCollab, ydoc, provider }: TiptapProps) => {
   const menuContainerRef = useRef(null)
-  const leftSidebar = useSidebar()
   const editorRef = useRef<PureEditorContent | null>(null)
   const [hideTextMenu] = useState(false)
 
-  const { editor, users, characterCount, collabState } = useBlockEditor({ hasCollab, ydoc, provider })
+  const { editor, users, characterCount, collabState, leftSidebar } = useBlockEditor({ hasCollab, ydoc, provider })
 
   const displayedUsers = users.slice(0, 3)
 

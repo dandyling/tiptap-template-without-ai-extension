@@ -1,2 +1,2 @@
 export * from './BlockEditor'
-export * from './useBlockEditor'
+export * from './hooks/useBlockEditor'

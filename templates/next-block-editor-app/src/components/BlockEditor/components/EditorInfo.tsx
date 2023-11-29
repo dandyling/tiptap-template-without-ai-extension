@@ -1,9 +1,9 @@
 import { WebSocketStatus } from '@hocuspocus/provider'
 import { memo } from 'react'
 import { EditorUser } from '../types'
-import { cn } from '../lib/utils'
-import { getConnectionText } from '../lib/utils/getConnectionText'
-import Tooltip from './ui/Tooltip'
+import { cn } from '../../../lib/utils'
+import { getConnectionText } from '../../../lib/utils/getConnectionText'
+import Tooltip from '../../ui/Tooltip'
 
 export type EditorInfoProps = {
   characters: number
