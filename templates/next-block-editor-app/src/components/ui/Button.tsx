@@ -17,27 +17,33 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     ref,
   ) => {
     const buttonClassName = cn(
-      'flex group items-center justify-center border gap-2 text-sm font-semibold rounded-md disabled:opacity-50 whitespace-nowrap',
+      'flex group items-center justify-center border border-transparent gap-2 text-sm font-semibold rounded-md disabled:opacity-50 whitespace-nowrap',
 
       variant === 'primary' &&
         cn(
-          'text-white bg-black border-black',
-          !disabled && !active && 'hover:bg-neutral-800 active:bg-neutral-900',
-          active && cn('bg-neutral-900', activeClassname),
+          'text-white bg-black border-black dark:text-black dark:bg-white dark:border-white',
+          !disabled &&
+            !active &&
+            'hover:bg-neutral-800 active:bg-neutral-900 dark:hover:bg-neutral-200 dark:active:bg-neutral-300',
+          active && cn('bg-neutral-900 dark:bg-neutral-300', activeClassname),
         ),
 
       variant === 'secondary' &&
         cn(
-          'text-neutral-900',
-          !disabled && !active && 'hover:bg-neutral-100 active:bg-neutral-200',
-          active && 'bg-neutral-200',
+          'text-neutral-900 dark:text-white',
+          !disabled &&
+            !active &&
+            'hover:bg-neutral-100 active:bg-neutral-200 dark:hover:bg-neutral-900 dark:active:bg-neutral-800',
+          active && 'bg-neutral-200 dark:bg-neutral-800',
         ),
 
       variant === 'tertiary' &&
         cn(
-          'bg-neutral-50 text-neutral-900',
-          !disabled && !active && 'hover:bg-neutral-100 active:bg-neutral-200',
-          active && cn('bg-neutral-200', activeClassname),
+          'bg-neutral-50 text-neutral-900 dark:bg-neutral-900 dark:text-white dark:border-neutral-900',
+          !disabled &&
+            !active &&
+            'hover:bg-neutral-100 active:bg-neutral-200 dark:hover:bg-neutral-800 dark:active:bg-neutral-700',
+          active && cn('bg-neutral-200 dark:bg-neutral-800', activeClassname),
         ),
 
       variant === 'ghost' &&

@@ -63,11 +63,11 @@ export const LinkEditor = memo(({ link, onLinkChange }: LinkEditorProps) => {
           asChild
           side="top"
           sideOffset={8}
-          className="z-50 flex items-center overflow-hidden bg-white border border-gray-200 rounded-lg shadow"
+          className="z-50 flex items-center overflow-hidden bg-white border border-neutral-200 rounded-lg shadow"
         >
           <form onSubmit={handleSubmit}>
             <div className="flex items-center justify-center flex-none w-10 h-10">
-              <Icon name="Link" className="w-4 h-4 text-gray-500" />
+              <Icon name="Link" className="w-4 h-4 text-neutral-500" />
             </div>
             <input
               className="flex-1 block h-10 py-2 text-sm outline-none"

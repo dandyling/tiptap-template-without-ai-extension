@@ -151,7 +151,7 @@ export const AiWriterView = ({ editor, node, getPos, deleteNode }: NodeViewWrapp
 
   return (
     <NodeViewWrapper data-drag-handle>
-      <Panel noShadow className="w-full bg-card-background text-card-foreground">
+      <Panel noShadow className="w-full">
         <div className="flex flex-col p-1">
           {isFetching && <Loader label="AI is now doing its job!" />}
           {previewText && (
@@ -182,7 +182,7 @@ export const AiWriterView = ({ editor, node, getPos, deleteNode }: NodeViewWrapp
                 customTrigger
                 withPortal
                 trigger={
-                  <Button variant="quaternary">
+                  <Button variant="tertiary">
                     <Icon name="Mic" />
                     {currentTone?.label || 'Tone'}
                     <Icon name="ChevronDown" />

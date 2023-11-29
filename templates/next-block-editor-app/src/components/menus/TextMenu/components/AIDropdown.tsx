@@ -36,8 +36,8 @@ export const AIDropdown = ({
     <Dropdown.Root>
       <Dropdown.Trigger asChild>
         <Toolbar.Button
-          className="text-purple-500 hover:text-purple-600 active:text-purple-600"
-          activeClassname="text-purple-600 hover:text-purple-600"
+          className="text-purple-500 hover:text-purple-600 active:text-purple-600 dark:text-purple-400 dark:hover:text-purple-300 dark:active:text-purple-400"
+          activeClassname="text-purple-600 hover:text-purple-600 dark:text-purple-400 dark:hover:text-purple-200"
         >
           <Icon name="Sparkles" className="mr-1" />
           AI Tools

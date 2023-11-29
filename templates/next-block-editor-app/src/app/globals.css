@@ -6,7 +6,7 @@
 
 @layer base {
   body {
-    @apply text-neutral-900;
+    @apply bg-white text-neutral-900 dark:text-neutral-100 dark:bg-black;
     @apply antialiased;
 
     font-size: 16px;
@@ -22,10 +22,20 @@
   pointer-events: none;
 }
 
+::-webkit-scrollbar {
+  @apply w-1 h-1 bg-neutral-500/20;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-neutral-500/50 rounded-full;
+}
+
 input[type='range'] {
-  @apply h-2.5 bg-gray-200 border-0 rounded appearance-none active:bg-gray-300 transition-all;
+  @apply h-2.5 bg-neutral-200 border-0 rounded appearance-none active:bg-neutral-300 transition-all;
+  @apply dark:bg-neutral-700 dark:active:bg-neutral-600;
 
   &::-webkit-slider-thumb {
-    @apply appearance-none w-3 h-5 bg-gray-400 rounded-full active:bg-gray-500 active:w-4 active:h-6 transition-all;
+    @apply appearance-none w-3 h-5 bg-neutral-400 rounded-full active:bg-neutral-500 active:w-4 active:h-6 transition-all;
+    @apply dark:bg-neutral-600 dark:active:bg-neutral-500;
   }
 }

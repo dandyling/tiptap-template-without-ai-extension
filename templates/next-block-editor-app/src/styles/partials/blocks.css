@@ -10,7 +10,7 @@
 
   /* Block Quote */
   figure[data-type='blockquoteFigure'] {
-    @apply my-14 text-black;
+    @apply my-14 text-black dark:text-white;
   }
 
   & > blockquote,

@@ -114,14 +114,14 @@ export const AiImageView = ({ editor, node, getPos, deleteNode }: NodeViewWrappe
 
   return (
     <NodeViewWrapper data-drag-handle>
-      <Panel noShadow className="w-full bg-card-background text-card-foreground">
+      <Panel noShadow className="w-full">
         <div className="flex flex-col p-1">
           {isFetching && <Loader label="AI is now doing its job!" />}
           {previewImage && (
             <>
               <PanelHeadline>Preview</PanelHeadline>
               <div
-                className="w-full mb-4 bg-white bg-center bg-no-repeat bg-contain border border-black rounded aspect-square"
+                className="w-full mb-4 bg-white bg-center bg-no-repeat bg-contain border border-black rounded dark:border-white aspect-square"
                 style={{ backgroundImage: `url(${previewImage})` }}
               />
             </>
@@ -145,7 +145,7 @@ export const AiImageView = ({ editor, node, getPos, deleteNode }: NodeViewWrappe
                 withPortal
                 customTrigger
                 trigger={
-                  <Button variant="quaternary">
+                  <Button variant="tertiary">
                     <Icon name="Image" />
                     {currentImageStyle?.label || 'Image style'}
                     <Icon name="ChevronDown" />

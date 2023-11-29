@@ -66,7 +66,7 @@ export const BlockEditor = ({ hasCollab, ydoc, provider }: TiptapProps) => {
           />
           <EditorContent editor={editor} ref={editorRef} className="flex-1 overflow-y-auto" />
           {collabState !== WebSocketStatus.Connected && (
-            <div className="absolute top-0 left-0 z-10 flex items-center justify-center w-full h-full text-gray-300 bg-white backdrop-blur-xl bg-opacity-10">
+            <div className="absolute top-0 left-0 z-10 flex items-center justify-center w-full h-full text-neutral-300 bg-white backdrop-blur-xl bg-opacity-10">
               <Spinner size={2} />
             </div>
           )}

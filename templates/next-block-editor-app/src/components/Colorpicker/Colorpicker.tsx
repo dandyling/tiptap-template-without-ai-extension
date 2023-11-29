@@ -39,7 +39,7 @@ export const ColorPicker = ({ color, onChange, onClear }: ColorPickerProps) => {
       <HexColorPicker className="w-full" color={color || ''} onChange={onChange} />
       <input
         type="text"
-        className="w-full p-2 bg-white border border-gray-200 rounded focus:outline-1 focus:ring-0 focus:outline-gray-300"
+        className="w-full p-2 bg-white border border-neutral-200 rounded focus:outline-1 focus:ring-0 focus:outline-neutral-300"
         placeholder="#000000"
         value={colorInputValue}
         onChange={handleColorUpdate}
