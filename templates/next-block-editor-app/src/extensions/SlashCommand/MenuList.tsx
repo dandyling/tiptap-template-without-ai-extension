@@ -2,6 +2,9 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import { Command, MenuListProps } from './types'
 import { CommandButton } from './CommandButton'
+import { Surface } from '@/components/ui/Surface'
+import { DropdownButton } from '@/components/ui/Dropdown'
+import { Icon } from '@/components/ui/Icon'
 
 export const MenuList = React.forwardRef((props: MenuListProps, ref) => {
   const scrollContainer = useRef<HTMLDivElement>(null)
@@ -112,10 +115,7 @@ export const MenuList = React.forwardRef((props: MenuListProps, ref) => {
   }
 
   return (
-    <div
-      ref={scrollContainer}
-      className="bg-white rounded-lg border border-neutral-200 shadow-sm text-black max-h-[min(80vh,24rem)] overflow-auto flex-wrap mb-8 p-2"
-    >
+    <Surface ref={scrollContainer} className="text-black max-h-[min(80vh,24rem)] overflow-auto flex-wrap mb-8 p-2">
       <div className="grid grid-cols-1 gap-0.5">
         {props.items.map((group, groupIndex: number) => (
           <React.Fragment key={`${group.title}-wrapper`}>
@@ -126,20 +126,19 @@ export const MenuList = React.forwardRef((props: MenuListProps, ref) => {
               {group.title}
             </div>
             {group.commands.map((command: Command, commandIndex: number) => (
-              <CommandButton
+              <DropdownButton
                 key={`${command.label}`}
-                icon={command.iconName}
-                ref={selectedGroupIndex === groupIndex && selectedCommandIndex === commandIndex ? activeItem : null}
-                title={command.label}
-                active={selectedGroupIndex === groupIndex && selectedCommandIndex === commandIndex}
-                description={command.description}
+                isActive={selectedGroupIndex === groupIndex && selectedCommandIndex === commandIndex}
                 onClick={createCommandClickHandler(groupIndex, commandIndex)}
-              />
+              >
+                <Icon name={command.iconName} className="mr-1" />
+                {command.label}
+              </DropdownButton>
             ))}
           </React.Fragment>
         ))}
       </div>
-    </div>
+    </Surface>
   )
 })
 

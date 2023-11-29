@@ -4,12 +4,16 @@ import toast from 'react-hot-toast'
 import { v4 as uuid } from 'uuid'
 import { ImageOptions } from '@tiptap-pro/extension-ai'
 
-import * as PopoverMenu from '@/components/ui/PopoverMenu'
+import * as Dropdown from '@radix-ui/react-dropdown-menu'
+
 import { Button } from '@/components/ui/Button'
 import { Loader } from '@/components/ui/Loader'
 import { Panel, PanelHeadline } from '@/components/ui/Panel'
 import { Textarea } from '@/components/ui/Textarea'
 import { Icon } from '@/components/ui/Icon'
+import { Surface } from '@/components/ui/Surface'
+import { DropdownButton } from '@/components/ui/Dropdown'
+import { Toolbar } from '@/components/ui/Toolbar'
 
 const imageStyles = [
   { name: 'photorealistic', label: 'Photorealistic', value: 'photorealistic' },
@@ -114,14 +118,14 @@ export const AiImageView = ({ editor, node, getPos, deleteNode }: NodeViewWrappe
 
   return (
     <NodeViewWrapper data-drag-handle>
-      <Panel noShadow className="w-full bg-card-background text-card-foreground">
+      <Panel noShadow className="w-full">
         <div className="flex flex-col p-1">
           {isFetching && <Loader label="AI is now doing its job!" />}
           {previewImage && (
             <>
               <PanelHeadline>Preview</PanelHeadline>
               <div
-                className="w-full mb-4 bg-white bg-center bg-no-repeat bg-contain border border-black rounded aspect-square"
+                className="w-full mb-4 bg-white bg-center bg-no-repeat bg-contain border border-black rounded dark:border-white aspect-square"
                 style={{ backgroundImage: `url(${previewImage})` }}
               />
             </>
@@ -141,37 +145,39 @@ export const AiImageView = ({ editor, node, getPos, deleteNode }: NodeViewWrappe
           />
           <div className="flex flex-row items-center justify-between gap-1">
             <div className="flex justify-between w-auto gap-1">
-              <PopoverMenu.Menu
-                withPortal
-                customTrigger
-                trigger={
-                  <Button variant="quaternary">
+              <Dropdown.Root>
+                <Dropdown.Trigger asChild>
+                  <Button variant="tertiary">
                     <Icon name="Image" />
                     {currentImageStyle?.label || 'Image style'}
                     <Icon name="ChevronDown" />
                   </Button>
-                }
-              >
-                {!!data.imageStyle && (
-                  <>
-                    <PopoverMenu.Item
-                      label="Reset"
-                      icon="Undo2"
-                      isActive={data.imageStyle === undefined}
-                      onClick={onUndoClick}
-                    />
-                    <PopoverMenu.Divider />
-                  </>
-                )}
-                {imageStyles.map(style => (
-                  <PopoverMenu.Item
-                    isActive={style.value === data.imageStyle}
-                    key={style.value}
-                    label={style.label}
-                    onClick={createItemClickHandler(style)}
-                  />
-                ))}
-              </PopoverMenu.Menu>
+                </Dropdown.Trigger>
+                <Dropdown.Portal>
+                  <Dropdown.Content side="bottom" align="start" asChild>
+                    <Surface className="p-2 min-w-[12rem]">
+                      {!!data.imageStyle && (
+                        <>
+                          <DropdownButton isActive={data.imageStyle === undefined} onClick={onUndoClick}>
+                            <Icon name="Undo2" />
+                            Reset
+                          </DropdownButton>
+                          <Toolbar.Divider horizontal />
+                        </>
+                      )}
+                      {imageStyles.map(style => (
+                        <DropdownButton
+                          isActive={style.value === data.imageStyle}
+                          key={style.value}
+                          onClick={createItemClickHandler(style)}
+                        >
+                          {style.label}
+                        </DropdownButton>
+                      ))}
+                    </Surface>
+                  </Dropdown.Content>
+                </Dropdown.Portal>
+              </Dropdown.Root>
             </div>
             <div className="flex flex-row items-center justify-between gap-1">
               {previewImage && (

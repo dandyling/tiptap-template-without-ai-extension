@@ -1,6 +1,7 @@
 import { forwardRef } from 'react'
 import { cn } from '@/lib/utils'
 import { Slot } from '@radix-ui/react-slot'
+import { Surface } from '../Surface'
 
 export type PanelProps = {
   spacing?: 'medium' | 'small'
@@ -10,18 +11,15 @@ export type PanelProps = {
 
 export const Panel = forwardRef<HTMLDivElement, PanelProps>(
   ({ asChild, className, children, spacing, noShadow, ...rest }, ref) => {
-    const panelClass = cn(
-      'bg-white shadow-sm border border-neutral-200 rounded-lg text-neutral-800 p-2',
-      spacing === 'small' && 'p-[0.2rem]',
-      noShadow && 'shadow-none',
-      className,
-    )
+    const panelClass = cn('p-2', spacing === 'small' && 'p-[0.2rem]', className)
 
     const Comp = asChild ? Slot : 'div'
 
     return (
-      <Comp className={panelClass} ref={ref} {...rest}>
-        {children}
+      <Comp ref={ref} {...rest}>
+        <Surface className={panelClass} withShadow={!noShadow}>
+          {children}
+        </Surface>
       </Comp>
     )
   },
@@ -79,7 +77,7 @@ PanelSection.displayName = 'PanelSection'
 
 export const PanelHeadline = forwardRef<HTMLDivElement, { asChild?: boolean } & React.HTMLAttributes<HTMLDivElement>>(
   ({ asChild, className, children, ...rest }, ref) => {
-    const headlineClass = cn('text-black/80 text-xs font-medium mb-2 ml-1.5', className)
+    const headlineClass = cn('text-black/80 dark:text-white/80 text-xs font-medium mb-2 ml-1.5', className)
 
     const Comp = asChild ? Slot : 'div'
 

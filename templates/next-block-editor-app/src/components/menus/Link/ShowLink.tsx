@@ -3,7 +3,7 @@ import React, { useCallback, useState } from 'react'
 
 import { Button } from '@/components/ui/Button'
 import { Icon } from '@/components/ui/Icon'
-import { Divider, Toolbar } from '@/components/ui/Toolbar'
+import { Toolbar } from '@/components/ui/Toolbar'
 import { Tooltip } from '@/components/ui/Tooltip'
 import { MenuProps } from '../types'
 import { EditLink } from './EditLink'
@@ -79,17 +79,17 @@ export const LinkMenu = ({ editor, appendTo }: MenuProps): JSX.Element => {
         },
       }}
     >
-      <Toolbar shouldShowContent={shouldShow()}>
+      <Toolbar.Wrapper shouldShowContent={shouldShow()}>
         <div className="flex max-w-[18rem]">
           {showEdit ? (
             <EditLink link={link} onSetLink={onSetLink} onUnsetLink={onUnsetLink} onBack={onHideEdit} />
           ) : (
             <>
-              <span className="self-center text-black leading-[0] ml-1.5">
+              <span className="self-center text-black dark:text-white leading-[0] ml-1.5">
                 <Icon name="Globe" />
               </span>
               <a
-                className="self-center text-black flex-1 text-sm font-medium leading-none mx-2 max-w-[25rem] min-w-[10rem] overflow-hidden underline overflow-ellipsis whitespace-nowrap"
+                className="self-center text-black dark:text-white flex-1 text-sm font-medium leading-none mx-2 max-w-[25rem] min-w-[10rem] overflow-hidden underline overflow-ellipsis whitespace-nowrap"
                 href={link}
                 title={link}
                 target="_blank"
@@ -107,7 +107,7 @@ export const LinkMenu = ({ editor, appendTo }: MenuProps): JSX.Element => {
                     <Icon name="Pencil" />
                   </Button>
                 </Tooltip>
-                <Divider />
+                <Toolbar.Divider />
                 <Tooltip title="Remove link">
                   <Button
                     // eslint-disable-next-line react/jsx-props-no-spreading
@@ -122,7 +122,7 @@ export const LinkMenu = ({ editor, appendTo }: MenuProps): JSX.Element => {
             </>
           )}
         </div>
-      </Toolbar>
+      </Toolbar.Wrapper>
     </BaseBubbleMenu>
   )
 }

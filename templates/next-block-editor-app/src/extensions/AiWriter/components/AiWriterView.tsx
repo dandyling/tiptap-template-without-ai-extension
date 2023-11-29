@@ -3,7 +3,6 @@ import { useCallback, useMemo, useState } from 'react'
 import toast from 'react-hot-toast'
 import { v4 as uuid } from 'uuid'
 
-import * as PopoverMenu from '@/components/ui/PopoverMenu'
 import { Button } from '@/components/ui/Button'
 import { Loader } from '@/components/ui/Loader'
 import { Panel, PanelHeadline } from '@/components/ui/Panel'
@@ -12,6 +11,11 @@ import { Icon } from '@/components/ui/Icon'
 
 import { AiTone, AiToneOption } from '@/components/BlockEditor/types'
 import { tones } from '@/lib/constants'
+
+import * as Dropdown from '@radix-ui/react-dropdown-menu'
+import { Toolbar } from '@/components/ui/Toolbar'
+import { Surface } from '@/components/ui/Surface'
+import { DropdownButton } from '@/components/ui/Dropdown'
 
 export interface DataProps {
   text: string
@@ -151,7 +155,7 @@ export const AiWriterView = ({ editor, node, getPos, deleteNode }: NodeViewWrapp
 
   return (
     <NodeViewWrapper data-drag-handle>
-      <Panel noShadow className="w-full bg-card-background text-card-foreground">
+      <Panel noShadow className="w-full">
         <div className="flex flex-col p-1">
           {isFetching && <Loader label="AI is now doing its job!" />}
           {previewText && (
@@ -178,37 +182,39 @@ export const AiWriterView = ({ editor, node, getPos, deleteNode }: NodeViewWrapp
           />
           <div className="flex flex-row items-center justify-between gap-1">
             <div className="flex justify-between w-auto gap-1">
-              <PopoverMenu.Menu
-                customTrigger
-                withPortal
-                trigger={
-                  <Button variant="quaternary">
+              <Dropdown.Root>
+                <Dropdown.Trigger>
+                  <Button variant="tertiary">
                     <Icon name="Mic" />
-                    {currentTone?.label || 'Tone'}
+                    {currentTone?.label || 'Change tone'}
                     <Icon name="ChevronDown" />
                   </Button>
-                }
-              >
-                {!!data.tone && (
-                  <>
-                    <PopoverMenu.Item
-                      label="Reset"
-                      icon="Undo2"
-                      isActive={data.tone === undefined}
-                      onClick={onUndoClick}
-                    />
-                    <PopoverMenu.Divider />
-                  </>
-                )}
-                {tones.map(tone => (
-                  <PopoverMenu.Item
-                    isActive={tone.value === data.tone}
-                    key={tone.value}
-                    label={tone.label}
-                    onClick={createItemClickHandler(tone)}
-                  />
-                ))}
-              </PopoverMenu.Menu>
+                </Dropdown.Trigger>
+                <Dropdown.Portal>
+                  <Dropdown.Content side="bottom" align="start" asChild>
+                    <Surface className="p-2 min-w-[12rem]">
+                      {!!data.tone && (
+                        <>
+                          <Dropdown.Item asChild>
+                            <DropdownButton isActive={data.tone === undefined} onClick={onUndoClick}>
+                              <Icon name="Undo2" />
+                              Reset
+                            </DropdownButton>
+                          </Dropdown.Item>
+                          <Toolbar.Divider horizontal />
+                        </>
+                      )}
+                      {tones.map(tone => (
+                        <Dropdown.Item asChild key={tone.value}>
+                          <DropdownButton isActive={tone.value === data.tone} onClick={createItemClickHandler(tone)}>
+                            {tone.label}
+                          </DropdownButton>
+                        </Dropdown.Item>
+                      ))}
+                    </Surface>
+                  </Dropdown.Content>
+                </Dropdown.Portal>
+              </Dropdown.Root>
             </div>
             <div className="flex justify-between w-auto gap-1">
               {previewText && (

@@ -7,7 +7,6 @@ import { MenuProps } from '@/components/menus/types'
 import { getRenderContainer } from '@/components/menus/utils/getRenderContainer'
 import { Toolbar } from '@/components/ui/Toolbar'
 import { ColumnLayout } from '../Columns'
-import { ToolbarButton } from '@/components/ui/ToolbarButton'
 import { Icon } from '@/components/ui/Icon'
 
 export const ColumnsMenu = ({ editor, appendTo }: MenuProps) => {
@@ -52,29 +51,29 @@ export const ColumnsMenu = ({ editor, appendTo }: MenuProps) => {
         sticky: 'popper',
       }}
     >
-      <Toolbar>
-        <ToolbarButton
+      <Toolbar.Wrapper>
+        <Toolbar.Button
           tooltip="Sidebar left"
           active={editor.isActive('columns', { layout: ColumnLayout.SidebarLeft })}
           onClick={onColumnLeft}
         >
           <Icon name="PanelLeft" />
-        </ToolbarButton>
-        <ToolbarButton
+        </Toolbar.Button>
+        <Toolbar.Button
           tooltip="Two columns"
           active={editor.isActive('columns', { layout: ColumnLayout.TwoColumn })}
           onClick={onColumnTwo}
         >
           <Icon name="Columns" />
-        </ToolbarButton>
-        <ToolbarButton
+        </Toolbar.Button>
+        <Toolbar.Button
           tooltip="Sidebar right"
           active={editor.isActive('columns', { layout: ColumnLayout.SidebarRight })}
           onClick={onColumnRight}
         >
           <Icon name="PanelRight" />
-        </ToolbarButton>
-      </Toolbar>
+        </Toolbar.Button>
+      </Toolbar.Wrapper>
     </BaseBubbleMenu>
   )
 }

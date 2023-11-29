@@ -1,8 +1,9 @@
 import { FormEvent, memo, useCallback, useMemo, useState } from 'react'
 import * as Popover from '@radix-ui/react-popover'
-import { ToolbarButton } from '../ui/ToolbarButton'
 import { Icon } from '../ui/Icon'
 import { Button } from '../ui/Button'
+import { Toolbar } from '../ui/Toolbar'
+import { Surface } from '../ui/Surface'
 
 export type OnLinkChangeFn = (link: string) => void // eslint-disable-line no-unused-vars
 
@@ -54,34 +55,31 @@ export const LinkEditor = memo(({ link, onLinkChange }: LinkEditorProps) => {
   return (
     <Popover.Root onOpenChange={setIsOpen}>
       <Popover.Trigger asChild>
-        <ToolbarButton active={isOpen} tooltip={!isOpen ? 'Link' : ''}>
+        <Toolbar.Button active={isOpen} tooltip={!isOpen ? 'Link' : ''}>
           <Icon name="Link2" />
-        </ToolbarButton>
+        </Toolbar.Button>
       </Popover.Trigger>
       <Popover.Portal>
-        <Popover.Content
-          asChild
-          side="top"
-          sideOffset={8}
-          className="z-50 flex items-center overflow-hidden bg-white border border-gray-200 rounded-lg shadow"
-        >
-          <form onSubmit={handleSubmit}>
-            <div className="flex items-center justify-center flex-none w-10 h-10">
-              <Icon name="Link" className="w-4 h-4 text-gray-500" />
-            </div>
-            <input
-              className="flex-1 block h-10 py-2 text-sm outline-none"
-              type="text"
-              placeholder="Enter a Link"
-              value={currentLink}
-              onChange={handleChange}
-            />
-            <div className="pr-1">
-              <Button variant="ghost" buttonSize="icon" type="submit" disabled={!currentLink || !isValidUrl}>
-                <Icon name="Check" className="w-5 h-5" />
-              </Button>
-            </div>
-          </form>
+        <Popover.Content asChild side="top" sideOffset={8}>
+          <Surface className="z-50">
+            <form className="flex items-center" onSubmit={handleSubmit}>
+              <div className="flex items-center justify-center flex-none w-10 h-10">
+                <Icon name="Link" className="w-4 h-4 text-neutral-500" />
+              </div>
+              <input
+                className="flex-1 block h-10 py-2 text-sm bg-white outline-none dark:bg-black"
+                type="text"
+                placeholder="Enter a Link"
+                value={currentLink}
+                onChange={handleChange}
+              />
+              <div className="pr-1">
+                <Button variant="ghost" buttonSize="icon" type="submit" disabled={!currentLink || !isValidUrl}>
+                  <Icon name="Check" className="w-5 h-5" />
+                </Button>
+              </div>
+            </form>
+          </Surface>
         </Popover.Content>
       </Popover.Portal>
     </Popover.Root>

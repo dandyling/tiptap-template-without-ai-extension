@@ -2,10 +2,10 @@ import { BubbleMenu as BaseBubbleMenu } from '@tiptap/react'
 import React, { useCallback } from 'react'
 import * as PopoverMenu from '@/components/ui/PopoverMenu'
 
-import { MenuProps, ShouldShowProps } from '@/components/BlockEditor/components/menus/types'
 import { Toolbar } from '@/components/ui/Toolbar'
 import { isColumnGripSelected } from './utils'
 import { Icon } from '@/components/ui/Icon'
+import { MenuProps, ShouldShowProps } from '@/components/menus/types'
 
 export const TableColumnMenu = React.memo(({ editor, appendTo }: MenuProps): JSX.Element => {
   const shouldShow = useCallback(
@@ -47,7 +47,7 @@ export const TableColumnMenu = React.memo(({ editor, appendTo }: MenuProps): JSX
       }}
       shouldShow={shouldShow}
     >
-      <Toolbar isVertical>
+      <Toolbar.Wrapper isVertical>
         <PopoverMenu.Item
           iconComponent={<Icon name="ArrowLeftToLine" />}
           close={false}
@@ -61,7 +61,7 @@ export const TableColumnMenu = React.memo(({ editor, appendTo }: MenuProps): JSX
           onClick={onAddColumnAfter}
         />
         <PopoverMenu.Item icon="Trash" close={false} label="Delete column" onClick={onDeleteColumn} />
-      </Toolbar>
+      </Toolbar.Wrapper>
     </BaseBubbleMenu>
   )
 })

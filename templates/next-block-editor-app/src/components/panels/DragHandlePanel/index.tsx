@@ -48,7 +48,7 @@ export const DragHandlePanel = ({
             variant="ghost"
             buttonSize="small"
             onClick={deleteNode}
-            className="justify-start w-full text-red-500 bg-transparent hover:text-red-600 hover:bg-red-500/10"
+            className="justify-start w-full text-red-500 bg-transparent hover:text-red-600 hover:bg-red-500/10 dark:text-red-400 dark:hover:text-red-500 dark:hover:bg-red-500/10"
           >
             <Icon name="Trash" className="mr-1" />
             Remove
