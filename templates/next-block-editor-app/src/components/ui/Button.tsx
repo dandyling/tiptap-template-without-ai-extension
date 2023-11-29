@@ -22,25 +22,31 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       variant === 'primary' &&
         cn(
           'text-white bg-black border-black',
-          !disabled && !active && 'hover:bg-gray-800 active:bg-gray-900',
-          active && cn('bg-gray-900', activeClassname),
+          !disabled && !active && 'hover:bg-neutral-800 active:bg-neutral-900',
+          active && cn('bg-neutral-900', activeClassname),
         ),
 
       variant === 'secondary' &&
-        cn('text-gray-900', !disabled && !active && 'hover:bg-gray-100 active:bg-gray-200', active && 'bg-gray-200'),
+        cn(
+          'text-neutral-900',
+          !disabled && !active && 'hover:bg-neutral-100 active:bg-neutral-200',
+          active && 'bg-neutral-200',
+        ),
 
       variant === 'tertiary' &&
         cn(
-          'bg-gray-50 text-gray-900',
-          !disabled && !active && 'hover:bg-gray-100 active:bg-gray-200',
-          active && cn('bg-gray-200', activeClassname),
+          'bg-neutral-50 text-neutral-900',
+          !disabled && !active && 'hover:bg-neutral-100 active:bg-neutral-200',
+          active && cn('bg-neutral-200', activeClassname),
         ),
 
       variant === 'ghost' &&
         cn(
-          'bg-transparent border-transparent text-gray-500',
-          !disabled && !active && 'hover:bg-black/5 hover:text-gray-700 active:bg-black/10 active:text-gray-800',
-          active && cn('bg-black/10 text-gray-800', activeClassname),
+          'bg-transparent border-transparent text-neutral-500 dark:text-neutral-400',
+          !disabled &&
+            !active &&
+            'hover:bg-black/5 hover:text-neutral-700 active:bg-black/10 active:text-neutral-800 dark:hover:bg-white/10 dark:hover:text-neutral-300 dark:active:text-neutral-200',
+          active && cn('bg-black/10 text-neutral-800 dark:bg-white/20 dark:text-neutral-200', activeClassname),
         ),
 
       buttonSize === 'medium' && 'py-2 px-3',
