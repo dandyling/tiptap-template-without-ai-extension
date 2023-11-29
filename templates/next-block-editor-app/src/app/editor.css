@@ -1,6 +1,6 @@
 .ProseMirror {
   .is-empty::before {
-    @apply text-dark/20;
+    @apply text-neutral-500;
   }
 
   & > *:first-child,
@@ -29,25 +29,25 @@
   [data-type='columns'] {
     &.has-focus [data-type='column'],
     &:hover [data-type='column'] {
-      @apply border-dark/10;
+      @apply border-neutral-100;
     }
 
     [data-type='column'].has-focus {
-      @apply border-dark/40;
+      @apply border-neutral-400;
     }
   }
 
   [data-type='column'] {
-    @apply rounded border-2 border-dotted border-dark/0 p-1;
+    @apply rounded border-2 border-dotted border-transparent p-1;
     transition: border 160ms cubic-bezier(0.45, 0.05, 0.55, 0.95);
 
     &:hover {
-      @apply border-dark/10;
+      @apply border-neutral-100;
     }
 
     &:has(.is-active),
     &.has-focus {
-      @apply border-dark/10;
+      @apply border-neutral-100;
     }
   }
 
@@ -57,12 +57,12 @@
     }
 
     &:hover img {
-      @apply border-2 border-dark/10;
+      @apply border-2 border-neutral-100;
     }
 
     &:has(.is-active) img,
     &.has-focus img {
-      @apply border-2 border-dark;
+      @apply border-2 border-neutral-800;
     }
   }
 

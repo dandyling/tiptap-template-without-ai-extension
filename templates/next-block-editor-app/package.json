@@ -15,6 +15,7 @@
     "@aws-sdk/s3-presigned-post": "^3.388.0",
     "@aws-sdk/signature-v4-crt": "^3.387.0",
     "@faker-js/faker": "^8.0.2",
+    "@fontsource/inter": "^5.0.15",
     "@hocuspocus/provider": "^2.2.3",
     "@radix-ui/react-alert-dialog": "^1.0.4",
     "@radix-ui/react-avatar": "^1.0.3",
