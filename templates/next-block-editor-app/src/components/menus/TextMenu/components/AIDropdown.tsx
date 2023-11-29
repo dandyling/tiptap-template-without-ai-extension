@@ -2,9 +2,36 @@ import { DropdownButton } from '@/components/ui/Dropdown'
 import { Icon } from '@/components/ui/Icon'
 import { Surface } from '@/components/ui/Surface'
 import { Toolbar } from '@/components/ui/Toolbar'
+import { languages, tones } from '@/lib/constants'
 import * as Dropdown from '@radix-ui/react-dropdown-menu'
+import { useCallback } from 'react'
 
-export const AIDropdown = () => {
+export type AIDropdownProps = {
+  onSimplify: () => void
+  onFixSpelling: () => void
+  onMakeShorter: () => void
+  onMakeLonger: () => void
+  onEmojify: () => void
+  onTldr: () => void
+  onTranslate: (language: string) => void
+  onTone: (tone: string) => void
+  onCompleteSentence: () => void
+}
+
+export const AIDropdown = ({
+  onCompleteSentence,
+  onEmojify,
+  onFixSpelling,
+  onMakeLonger,
+  onMakeShorter,
+  onSimplify,
+  onTldr,
+  onTone,
+  onTranslate,
+}: AIDropdownProps) => {
+  const handleTone = useCallback((tone: string) => () => onTone(tone), [onTone])
+  const handleTranslate = useCallback((language: string) => () => onTranslate(language), [onTranslate])
+
   return (
     <Dropdown.Root>
       <Dropdown.Trigger asChild>
@@ -19,25 +46,25 @@ export const AIDropdown = () => {
       </Dropdown.Trigger>
       <Dropdown.Content asChild>
         <Surface className="p-2 min-w-[10rem]">
-          <Dropdown.Item asChild onClick={console.log}>
+          <Dropdown.Item onClick={onSimplify}>
             <DropdownButton>
               <Icon name="CircleSlash" />
               Simplify
             </DropdownButton>
           </Dropdown.Item>
-          <Dropdown.Item asChild onClick={console.log}>
+          <Dropdown.Item onClick={onFixSpelling}>
             <DropdownButton>
               <Icon name="Eraser" />
               Fix spelling & grammar
             </DropdownButton>
           </Dropdown.Item>
-          <Dropdown.Item asChild onClick={console.log}>
+          <Dropdown.Item onClick={onMakeShorter}>
             <DropdownButton>
               <Icon name="ArrowLeftToLine" />
               Make shorter
             </DropdownButton>
           </Dropdown.Item>
-          <Dropdown.Item asChild onClick={console.log}>
+          <Dropdown.Item onClick={onMakeLonger}>
             <DropdownButton>
               <Icon name="ArrowRightToLine" />
               Make longer
@@ -53,58 +80,21 @@ export const AIDropdown = () => {
             </Dropdown.SubTrigger>
             <Dropdown.SubContent>
               <Surface className="flex flex-col min-w-[15rem] p-2 max-h-[20rem] overflow-auto">
-                <Dropdown.Item asChild onClick={console.log}>
-                  <DropdownButton>Academic</DropdownButton>
-                </Dropdown.Item>
-                <Dropdown.Item asChild onClick={console.log}>
-                  <DropdownButton>Business</DropdownButton>
-                </Dropdown.Item>
-                <Dropdown.Item asChild onClick={console.log}>
-                  <DropdownButton>Casual</DropdownButton>
-                </Dropdown.Item>
-                <Dropdown.Item asChild onClick={console.log}>
-                  <DropdownButton>Childfriendly</DropdownButton>
-                </Dropdown.Item>
-                <Dropdown.Item asChild onClick={console.log}>
-                  <DropdownButton>Conversational</DropdownButton>
-                </Dropdown.Item>
-                <Dropdown.Item asChild onClick={console.log}>
-                  <DropdownButton>Emotional</DropdownButton>
-                </Dropdown.Item>
-                <Dropdown.Item asChild onClick={console.log}>
-                  <DropdownButton>Humorous</DropdownButton>
-                </Dropdown.Item>
-                <Dropdown.Item asChild onClick={console.log}>
-                  <DropdownButton>Informative</DropdownButton>
-                </Dropdown.Item>
-                <Dropdown.Item asChild onClick={console.log}>
-                  <DropdownButton>Inspirational</DropdownButton>
-                </Dropdown.Item>
-                <Dropdown.Item asChild onClick={console.log}>
-                  <DropdownButton>Memeify</DropdownButton>
-                </Dropdown.Item>
-                <Dropdown.Item asChild onClick={console.log}>
-                  <DropdownButton>Narrative</DropdownButton>
-                </Dropdown.Item>
-                <Dropdown.Item asChild onClick={console.log}>
-                  <DropdownButton>Objective</DropdownButton>
-                </Dropdown.Item>
-                <Dropdown.Item asChild onClick={console.log}>
-                  <DropdownButton>Persuasive</DropdownButton>
-                </Dropdown.Item>
-                <Dropdown.Item asChild onClick={console.log}>
-                  <DropdownButton>Poetic</DropdownButton>
-                </Dropdown.Item>
+                {tones.map(tone => (
+                  <Dropdown.Item onClick={handleTone(tone.value)} key={tone.value}>
+                    <DropdownButton>{tone.label}</DropdownButton>
+                  </Dropdown.Item>
+                ))}
               </Surface>
             </Dropdown.SubContent>
           </Dropdown.Sub>
-          <Dropdown.Item asChild onClick={console.log}>
+          <Dropdown.Item onClick={onTldr}>
             <DropdownButton>
               <Icon name="MoreHorizontal" />
               Tl;dr:
             </DropdownButton>
           </Dropdown.Item>
-          <Dropdown.Item asChild onClick={console.log}>
+          <Dropdown.Item onClick={onEmojify}>
             <DropdownButton>
               <Icon name="SmilePlus" />
               Emojify
@@ -120,31 +110,15 @@ export const AIDropdown = () => {
             </Dropdown.SubTrigger>
             <Dropdown.SubContent>
               <Surface className="flex flex-col min-w-[15rem] p-2 max-h-[20rem] overflow-auto">
-                <Dropdown.Item asChild onClick={console.log}>
-                  <DropdownButton>English</DropdownButton>
-                </Dropdown.Item>
-                <Dropdown.Item asChild onClick={console.log}>
-                  <DropdownButton>German</DropdownButton>
-                </Dropdown.Item>
-                <Dropdown.Item asChild onClick={console.log}>
-                  <DropdownButton>Spanish</DropdownButton>
-                </Dropdown.Item>
-                <Dropdown.Item asChild onClick={console.log}>
-                  <DropdownButton>Italian</DropdownButton>
-                </Dropdown.Item>
-                <Dropdown.Item asChild onClick={console.log}>
-                  <DropdownButton>French</DropdownButton>
-                </Dropdown.Item>
-                <Dropdown.Item asChild onClick={console.log}>
-                  <DropdownButton>Swedish</DropdownButton>
-                </Dropdown.Item>
-                <Dropdown.Item asChild onClick={console.log}>
-                  <DropdownButton>Greek</DropdownButton>
-                </Dropdown.Item>
+                {languages.map(lang => (
+                  <Dropdown.Item onClick={handleTranslate(lang.value)} key={lang.value}>
+                    <DropdownButton>{lang.label}</DropdownButton>
+                  </Dropdown.Item>
+                ))}
               </Surface>
             </Dropdown.SubContent>
           </Dropdown.Sub>
-          <Dropdown.Item asChild onClick={console.log}>
+          <Dropdown.Item onClick={onCompleteSentence}>
             <DropdownButton>
               <Icon name="PenLine" />
               Complete sentence

@@ -38,7 +38,17 @@ export const TextMenu = ({ editor }: TextMenuProps) => {
     <BubbleMenu editor={editor} pluginKey="textMenu" shouldShow={states.shouldShow} updateDelay={100}>
       {isVisible ? (
         <Toolbar.Wrapper>
-          <AIDropdown />
+          <AIDropdown
+            onCompleteSentence={commands.onCompleteSentence}
+            onEmojify={commands.onEmojify}
+            onFixSpelling={commands.onFixSpelling}
+            onMakeLonger={commands.onMakeLonger}
+            onMakeShorter={commands.onMakeShorter}
+            onSimplify={commands.onSimplify}
+            onTldr={commands.onTldr}
+            onTone={commands.onTone}
+            onTranslate={commands.onTranslate}
+          />
           <Toolbar.Divider />
           <MemoContentTypePicker options={blockOptions} />
           <MemoFontFamilyPicker onChange={commands.onSetFont} value={states.currentFont || ''} />

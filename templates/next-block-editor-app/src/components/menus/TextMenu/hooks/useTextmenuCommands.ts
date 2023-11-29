@@ -22,6 +22,16 @@ export const useTextmenuCommands = (editor: Editor) => {
   const onChangeHighlight = useCallback((color: string) => editor.chain().setHighlight({ color }).run(), [editor])
   const onClearHighlight = useCallback(() => editor.chain().focus().unsetHighlight().run(), [editor])
 
+  const onSimplify = useCallback(() => editor.chain().focus().aiSimplify().run(), [editor])
+  const onEmojify = useCallback(() => editor.chain().focus().aiEmojify().run(), [editor])
+  const onCompleteSentence = useCallback(() => editor.chain().focus().aiComplete().run(), [editor])
+  const onFixSpelling = useCallback(() => editor.chain().focus().aiFixSpellingAndGrammar().run(), [editor])
+  const onMakeLonger = useCallback(() => editor.chain().focus().aiExtend().run(), [editor])
+  const onMakeShorter = useCallback(() => editor.chain().focus().aiShorten().run(), [editor])
+  const onTldr = useCallback(() => editor.chain().focus().aiTldr().run(), [editor])
+  const onTone = useCallback((tone: string) => editor.chain().focus().aiAdjustTone(tone).run(), [editor])
+  const onTranslate = useCallback((language: string) => editor.chain().focus().aiTranslate(language).run(), [editor])
+
   const onSetFont = useCallback(
     (font: string) => {
       if (!font || font.length === 0) {
@@ -61,5 +71,14 @@ export const useTextmenuCommands = (editor: Editor) => {
     onClearHighlight,
     onSetFont,
     onSetFontSize,
+    onSimplify,
+    onEmojify,
+    onCompleteSentence,
+    onFixSpelling,
+    onMakeLonger,
+    onMakeShorter,
+    onTldr,
+    onTone,
+    onTranslate,
   }
 }
