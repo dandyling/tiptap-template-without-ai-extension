@@ -20,8 +20,6 @@ import { ColumnsMenu } from '@/extensions/MultiColumn/menus'
 import { TableColumnMenu, TableRowMenu } from '@/extensions/Table/menus'
 import { useAIState } from '@/hooks/useAIState'
 import { createPortal } from 'react-dom'
-import { Icon } from '../ui/Icon'
-import { EditorInfo } from './components/EditorInfo'
 import { TiptapProps } from './types'
 import { EditorHeader } from './components/EditorHeader'
 import { TextMenu } from '../menus/TextMenu'
@@ -30,7 +28,6 @@ export const BlockEditor = ({ hasCollab, ydoc, provider }: TiptapProps) => {
   const aiState = useAIState()
   const menuContainerRef = useRef(null)
   const editorRef = useRef<PureEditorContent | null>(null)
-  const [hideTextMenu] = useState(false)
 
   const { editor, users, characterCount, collabState, leftSidebar } = useBlockEditor({ hasCollab, ydoc, provider })
 
@@ -66,7 +63,7 @@ export const BlockEditor = ({ hasCollab, ydoc, provider }: TiptapProps) => {
           />
           <EditorContent editor={editor} ref={editorRef} className="flex-1 overflow-y-auto" />
           {collabState !== WebSocketStatus.Connected && (
-            <div className="absolute top-0 left-0 z-10 flex items-center justify-center w-full h-full text-neutral-300 bg-white backdrop-blur-xl bg-opacity-10">
+            <div className="absolute top-0 left-0 z-10 flex items-center justify-center w-full h-full bg-white text-neutral-300 backdrop-blur-xl bg-opacity-10">
               <Spinner size={2} />
             </div>
           )}

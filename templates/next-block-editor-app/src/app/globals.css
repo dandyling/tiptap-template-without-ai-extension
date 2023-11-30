@@ -6,11 +6,16 @@
 
 @layer base {
   body {
-    @apply bg-white text-neutral-900 dark:text-neutral-100 dark:bg-black;
+    @apply bg-white text-neutral-900 dark:text-white dark:bg-black;
     @apply antialiased;
 
     font-size: 16px;
   }
+}
+
+html,
+body {
+  @apply bg-white text-neutral-900 dark:bg-black dark:text-white;
 }
 
 input::placeholder,
@@ -50,7 +55,7 @@ input[type='range'] {
   @apply dark:bg-neutral-700 dark:active:bg-neutral-600;
 
   &::-webkit-slider-thumb {
-    @apply appearance-none w-3 h-5 bg-neutral-400 rounded-full active:bg-neutral-500 active:w-4 active:h-6 transition-all;
-    @apply dark:bg-neutral-600 dark:active:bg-neutral-500;
+    @apply appearance-none w-3 h-5 bg-neutral-800 rounded-full active:bg-neutral-900 active:w-4 active:h-6 transition-all;
+    @apply dark:bg-neutral-100 dark:active:bg-white;
   }
 }

@@ -6,15 +6,13 @@ import { BubbleMenu, Editor } from '@tiptap/react'
 import { memo } from 'react'
 import * as Popover from '@radix-ui/react-popover'
 import { Surface } from '@/components/ui/Surface'
-import { ColorPicker } from '@/components/Colorpicker'
+import { ColorPicker } from '@/components/panels'
 import { FontFamilyPicker } from './components/FontFamilyPicker'
 import { FontSizePicker } from './components/FontSizePicker'
 import { useTextmenuContentTypes } from './hooks/useTextmenuContentTypes'
 import { ContentTypePicker } from './components/ContentTypePicker'
-import * as Dropdown from '@radix-ui/react-dropdown-menu'
-import { DropdownButton } from '@/components/ui/Dropdown'
 import { AIDropdown } from './components/AIDropdown'
-import { LinkEditor } from './components/LinkEditor'
+import { EditLinkPopover } from './components/EditLinkPopover'
 
 // We memorize the button so each button is not rerendered
 // on every editor state change
@@ -94,7 +92,7 @@ export const TextMenu = ({ editor }: TextMenuProps) => {
           <MemoButton tooltip="Code block" onClick={commands.onCodeBlock}>
             <Icon name="Code2" />
           </MemoButton>
-          <LinkEditor onSetLink={commands.onLink} />
+          <EditLinkPopover onSetLink={commands.onLink} />
           <Popover.Root>
             <Popover.Trigger asChild>
               <MemoButton active={!!states.currentHighlight} tooltip="Highlight text">

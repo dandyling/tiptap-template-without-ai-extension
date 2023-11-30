@@ -1,2 +1,1 @@
-export { EditLink } from './EditLink'
-export { LinkMenu } from './ShowLink'
+export { LinkMenu } from './LinkMenu'
