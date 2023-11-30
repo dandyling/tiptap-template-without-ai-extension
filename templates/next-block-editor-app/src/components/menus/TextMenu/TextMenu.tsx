@@ -14,7 +14,7 @@ import { ContentTypePicker } from './components/ContentTypePicker'
 import * as Dropdown from '@radix-ui/react-dropdown-menu'
 import { DropdownButton } from '@/components/ui/Dropdown'
 import { AIDropdown } from './components/AIDropdown'
-import { LinkEditor } from '@/components/toolbar/LinkEditor'
+import { LinkEditor } from './components/LinkEditor'
 
 // We memorize the button so each button is not rerendered
 // on every editor state change
@@ -94,7 +94,7 @@ export const TextMenu = ({ editor }: TextMenuProps) => {
           <MemoButton tooltip="Code block" onClick={commands.onCodeBlock}>
             <Icon name="Code2" />
           </MemoButton>
-          <LinkEditor onLinkChange={commands.onLink} />
+          <LinkEditor onSetLink={commands.onLink} />
           <Popover.Root>
             <Popover.Trigger asChild>
               <MemoButton active={!!states.currentHighlight} tooltip="Highlight text">
