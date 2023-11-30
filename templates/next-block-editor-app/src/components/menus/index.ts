@@ -1,1 +1,2 @@
-export * from './Link'
+export * from './LinkMenu'
+export * from './TextMenu'
