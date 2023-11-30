@@ -125,7 +125,7 @@ export const AiImageView = ({ editor, node, getPos, deleteNode }: NodeViewWrappe
             <>
               <PanelHeadline>Preview</PanelHeadline>
               <div
-                className="w-full mb-4 bg-white bg-center bg-no-repeat bg-contain border border-black rounded dark:border-white aspect-square"
+                className="w-full mb-4 bg-white bg-center bg-no-repeat bg-contain border border-black rounded dark:border-neutral-700 aspect-square"
                 style={{ backgroundImage: `url(${previewImage})` }}
               />
             </>
