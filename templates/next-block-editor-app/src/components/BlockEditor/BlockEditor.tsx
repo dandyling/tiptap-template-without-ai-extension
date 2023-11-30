@@ -11,7 +11,7 @@ import { useBlockEditor } from '@/hooks/useBlockEditor'
 
 import '@/styles/index.css'
 
-import { SidebarPanel } from '@/components/panels/SidebarPanel'
+import { Sidebar } from '@/components/Sidebar'
 import { Loader } from '@/components/ui/Loader'
 import { Spinner } from '@/components/ui/Spinner'
 import { EditorContext } from '@/context/EditorContext'
@@ -51,7 +51,7 @@ export const BlockEditor = ({ hasCollab, ydoc, provider }: TiptapProps) => {
   return (
     <EditorContext.Provider value={providerValue}>
       <div className="flex h-full" ref={menuContainerRef}>
-        <SidebarPanel isOpen={leftSidebar.isOpen} onClose={leftSidebar.close} editor={editor} />
+        <Sidebar isOpen={leftSidebar.isOpen} onClose={leftSidebar.close} editor={editor} />
         <div className="relative flex flex-col flex-1 h-full overflow-hidden">
           <EditorHeader
             characters={characterCount.characters()}

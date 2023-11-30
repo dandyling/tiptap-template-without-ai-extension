@@ -4,9 +4,9 @@ import { Node } from '@tiptap/pm/model'
 import { Button } from '../../ui/Button'
 import { Icon } from '../../ui/Icon'
 import { Panel, PanelFooter, PanelSection } from '../../ui/Panel'
-import useDragHandlePanel from './DragHandlePanel.hooks'
+import useDragHandlePanel from './DragHandleMenu.hooks'
 
-export const DragHandlePanel = ({
+export const DragHandleMenu = ({
   editor,
   currentNode,
   currentNodePos,
@@ -59,4 +59,4 @@ export const DragHandlePanel = ({
   )
 }
 
-export default DragHandlePanel
+export default DragHandleMenu

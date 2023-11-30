@@ -5,12 +5,12 @@ import { memo, useEffect, useState } from 'react'
 import { TableOfContentStorage } from '@tiptap-pro/extension-table-of-content'
 import { cn } from '@/lib/utils'
 
-export type TableOfContentPanelProps = {
+export type TableOfContentsProps = {
   editor: CoreEditor
   onItemClick?: () => void
 }
 
-export const TableOfContentPanel = memo(({ editor, onItemClick }: TableOfContentPanelProps) => {
+export const TableOfContents = memo(({ editor, onItemClick }: TableOfContentsProps) => {
   const [data, setData] = useState<TableOfContentStorage | null>(null)
 
   useEffect(() => {
@@ -58,4 +58,4 @@ export const TableOfContentPanel = memo(({ editor, onItemClick }: TableOfContent
   )
 })
 
-TableOfContentPanel.displayName = 'TableOfContentPanel'
+TableOfContents.displayName = 'TableOfContents'

@@ -7,8 +7,7 @@ import { useCallback } from 'react'
 import { Button } from '../Button'
 import { useDragHandleData } from './hooks'
 import { GripVerticalIcon, PlusIcon } from 'lucide-react'
-import DragHandlePanel from '../../panels/DragHandlePanel'
-import { Instance } from 'tippy.js'
+import DragHandleMenu from '@/components/menus/DragHandleMenu'
 
 export const DragHandleButton = ({ editor, appendTo }: { editor: Editor; appendTo?: React.RefObject<any> }) => {
   const { currentNode, currentNodePos, setCurrentNode, setCurrentNodePos } = useDragHandleData()
@@ -24,7 +23,7 @@ export const DragHandleButton = ({ editor, appendTo }: { editor: Editor; appendT
     [setCurrentNodePos, setCurrentNode],
   )
 
-  const CurrentPanel = <DragHandlePanel editor={editor} currentNode={currentNode} currentNodePos={currentNodePos} />
+  const CurrentPanel = <DragHandleMenu editor={editor} currentNode={currentNode} currentNodePos={currentNodePos} />
 
   const onTippyShow = useCallback(() => {
     editor.commands.setMeta('lockDragHandle', true)

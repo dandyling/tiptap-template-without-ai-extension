@@ -1,9 +1,9 @@
 import { cn } from '@/lib/utils'
 import { memo, useCallback } from 'react'
 import { Editor } from '@tiptap/react'
-import { TableOfContentPanel } from './TableOfContentPanel'
+import { TableOfContents } from '../TableOfContents'
 
-export const SidebarPanel = memo(
+export const Sidebar = memo(
   ({ editor, isOpen, onClose }: { editor: Editor; isOpen?: boolean; onClose: () => void }) => {
     const handlePotentialClose = useCallback(() => {
       if (window.innerWidth < 1024) {
@@ -22,7 +22,7 @@ export const SidebarPanel = memo(
       <div className={windowClassName}>
         <div className="w-full h-full overflow-hidden">
           <div className="w-64 h-full p-6 overflow-auto">
-            <TableOfContentPanel onItemClick={handlePotentialClose} editor={editor} />
+            <TableOfContents onItemClick={handlePotentialClose} editor={editor} />
           </div>
         </div>
       </div>
@@ -30,4 +30,4 @@ export const SidebarPanel = memo(
   },
 )
 
-SidebarPanel.displayName = 'TableOfContentSidepanel'
+Sidebar.displayName = 'TableOfContentSidepanel'
