@@ -43,7 +43,7 @@ export const EditorInfo = memo(({ characters, collabState, users, words }: Edito
                 <Tooltip title={user.name}>
                   <img
                     className="w-8 h-8 border border-white rounded-full dark:border-black"
-                    src={`https://api.dicebear.com/6.x/avataaars/svg?seed=${
+                    src={`https://api.dicebear.com/7.x/notionists-neutral/svg?seed=${
                       user.name
                     }&backgroundColor=${user.color.replace('#', '')}`}
                     alt="avatar"
