@@ -55,26 +55,19 @@ export const SlashCommand = Extension.create({
           const isParagraph = $from.parent.type.name === 'paragraph'
           const isStartOfNode = $from.parent.textContent?.charAt(0) === '/'
           // TODO
-          const isInSection = false
           const isInColumn = this.editor.isActive('column')
 
+          const afterContent = $from.parent.textContent?.substring($from.parent.textContent?.indexOf('/'))
+          const isValidAfterContent = !afterContent?.endsWith('  ')
+
           return (
-            (isRootDepth && isParagraph && isStartOfNode) ||
-            (isInSection && isParagraph && isStartOfNode) ||
-            (isInColumn && isParagraph && isStartOfNode)
+            ((isRootDepth && isParagraph && isStartOfNode) || (isInColumn && isParagraph && isStartOfNode)) &&
+            isValidAfterContent
           )
         },
         command: ({ editor, props }: { editor: Editor; props: any }) => {
-          const {
-            view,
-            view: {
-              state,
-              state: {
-                selection: { $head, $from },
-              },
-              dispatch,
-            },
-          } = editor
+          const { view, state } = editor
+          const { $head, $from } = view.state.selection
 
           const end = $from.pos
           const from = $head?.nodeBefore
@@ -82,7 +75,7 @@ export const SlashCommand = Extension.create({
             : $from.start()
 
           const tr = state.tr.deleteRange(from, end)
-          dispatch(tr)
+          view.dispatch(tr)
 
           props.action(editor)
           view.focus()
