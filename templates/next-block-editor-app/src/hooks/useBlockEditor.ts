@@ -8,11 +8,11 @@ import { TiptapCollabProvider, WebSocketStatus } from '@hocuspocus/provider'
 import * as Y from 'yjs'
 
 import { ExtensionKit } from '@/extensions/extension-kit'
-import { EditorContext } from '../../../context/EditorContext'
-import { userColors, userNames } from '../../../lib/constants'
-import { randomElement } from '../../../lib/utils'
-import { EditorUser } from '../types'
-import { useSidebar } from '../../../hooks/useSidebar'
+import { EditorContext } from '../context/EditorContext'
+import { userColors, userNames } from '../lib/constants'
+import { randomElement } from '../lib/utils'
+import { EditorUser } from '../components/BlockEditor/types'
+import { useSidebar } from './useSidebar'
 
 const TIPTAP_AI_BASE_URL = process.env.NEXT_PUBLIC_TIPTAP_AI_BASE_URL
 

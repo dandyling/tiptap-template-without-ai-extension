@@ -6,8 +6,8 @@ import { v4 as uuid } from 'uuid'
 import { Toolbar } from '@/components/ui/Toolbar'
 import { Icon } from '@/components/ui/Icon'
 import { ImageBlockWidth } from './ImageBlockWidth'
-import { getRenderContainer } from '@/components/menus/utils'
 import { MenuProps } from '@/components/menus/types'
+import { getRenderContainer } from '@/lib/utils'
 
 export const ImageBlockMenu = ({ editor, appendTo }: MenuProps): JSX.Element => {
   const menuRef = useRef<HTMLDivElement>(null)

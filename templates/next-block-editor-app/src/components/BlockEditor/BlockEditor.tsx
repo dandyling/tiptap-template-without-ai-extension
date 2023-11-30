@@ -2,12 +2,12 @@
 
 import { WebSocketStatus } from '@hocuspocus/provider'
 import { EditorContent, PureEditorContent } from '@tiptap/react'
-import React, { useMemo, useRef, useState } from 'react'
+import React, { useMemo, useRef } from 'react'
 
 import { LinkMenu } from '@/components/menus'
 import { DragHandleButton } from '@/components/ui/DragHandleButton'
 
-import { useBlockEditor } from './hooks/useBlockEditor'
+import { useBlockEditor } from '@/hooks/useBlockEditor'
 
 import '@/styles/index.css'
 
