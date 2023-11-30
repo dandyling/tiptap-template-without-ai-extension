@@ -5,7 +5,6 @@ import { EditorContent, PureEditorContent } from '@tiptap/react'
 import React, { useMemo, useRef } from 'react'
 
 import { LinkMenu } from '@/components/menus'
-import { DragHandleButton } from '@/components/ui/DragHandleButton'
 
 import { useBlockEditor } from '@/hooks/useBlockEditor'
 
@@ -23,6 +22,7 @@ import { createPortal } from 'react-dom'
 import { TiptapProps } from './types'
 import { EditorHeader } from './components/EditorHeader'
 import { TextMenu } from '../menus/TextMenu'
+import { ContentItemMenu } from '../menus/ContentItemMenu'
 
 export const BlockEditor = ({ hasCollab, ydoc, provider }: TiptapProps) => {
   const aiState = useAIState()
@@ -69,7 +69,7 @@ export const BlockEditor = ({ hasCollab, ydoc, provider }: TiptapProps) => {
           )}
           {collabState === WebSocketStatus.Connected && (
             <>
-              <DragHandleButton editor={editor} appendTo={menuContainerRef} />
+              <ContentItemMenu editor={editor} />
               <LinkMenu editor={editor} appendTo={menuContainerRef} />
               <TextMenu editor={editor} />
               <ColumnsMenu editor={editor} appendTo={menuContainerRef} />

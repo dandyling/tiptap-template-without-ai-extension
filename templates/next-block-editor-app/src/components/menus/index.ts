@@ -1,3 +1,3 @@
 export * from './LinkMenu'
 export * from './TextMenu'
-export * from './DragHandleMenu'
+export * from './ContentItemMenu'
