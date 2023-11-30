@@ -12,7 +12,7 @@ import { Panel, PanelHeadline } from '@/components/ui/Panel'
 import { Textarea } from '@/components/ui/Textarea'
 import { Icon } from '@/components/ui/Icon'
 import { Surface } from '@/components/ui/Surface'
-import { DropdownButton } from '@/components/ui/Dropdown'
+import { DropdownButton } from '@/components/ui/DropdownButton'
 import { Toolbar } from '@/components/ui/Toolbar'
 
 const imageStyles = [

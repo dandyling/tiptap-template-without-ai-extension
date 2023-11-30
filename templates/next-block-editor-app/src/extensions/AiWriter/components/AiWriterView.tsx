@@ -15,7 +15,7 @@ import { tones } from '@/lib/constants'
 import * as Dropdown from '@radix-ui/react-dropdown-menu'
 import { Toolbar } from '@/components/ui/Toolbar'
 import { Surface } from '@/components/ui/Surface'
-import { DropdownButton } from '@/components/ui/Dropdown'
+import { DropdownButton } from '@/components/ui/DropdownButton'
 
 export interface DataProps {
   text: string

@@ -4,7 +4,7 @@ import { useMemo } from 'react'
 import * as Dropdown from '@radix-ui/react-dropdown-menu'
 import { Toolbar } from '@/components/ui/Toolbar'
 import { Surface } from '@/components/ui/Surface'
-import { DropdownButton, DropdownCategoryTitle } from '@/components/ui/Dropdown'
+import { DropdownButton, DropdownCategoryTitle } from '@/components/ui/DropdownButton'
 
 export type ContentTypePickerOption = {
   label: string
