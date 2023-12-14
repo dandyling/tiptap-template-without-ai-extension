@@ -18,11 +18,9 @@ import { initialContent } from '@/lib/data/initialContent'
 const TIPTAP_AI_BASE_URL = process.env.NEXT_PUBLIC_TIPTAP_AI_BASE_URL
 
 export const useBlockEditor = ({
-  hasCollab,
   ydoc,
   provider,
 }: {
-  hasCollab: boolean
   ydoc: Y.Doc
   provider?: TiptapCollabProvider | null | undefined
 }) => {
@@ -44,21 +42,16 @@ export const useBlockEditor = ({
         ...ExtensionKit({
           provider,
         }),
-        //
-        ...(hasCollab
-          ? [
-              Collaboration.configure({
-                document: ydoc,
-              }),
-              CollaborationCursor.configure({
-                provider,
-                user: {
-                  name: randomElement(userNames),
-                  color: randomElement(userColors),
-                },
-              }),
-            ]
-          : []),
+        Collaboration.configure({
+          document: ydoc,
+        }),
+        CollaborationCursor.configure({
+          provider,
+          user: {
+            name: randomElement(userNames),
+            color: randomElement(userColors),
+          },
+        }),
         Ai.configure({
           appId: 'APP_ID_HERE',
           token: 'TOKEN_HERE',
@@ -86,29 +79,8 @@ export const useBlockEditor = ({
           class: 'min-h-full',
         },
       },
-      ...(!hasCollab
-        ? {
-            content: `
-      <p>
-        How Tiptap is emerging as the widely accepted standard in text editing frameworks
-      </p>
-      <p>
-        Tiptap is rapidly gaining popularity as the go-to choice for text editing frameworks because of its lightweight and user-friendly nature. With its intuitive API, developers can effortlessly build custom text editing components that are perfectly suited to their requirements. Additionally, its compatibility with popular frameworks like React and Vue makes it an excellent option for developers seeking a powerful and flexible text editor.
-      </p>
-      <p>
-        Due to its constant progress and increasing number of users, Tiptap is becoming a vital element in contemporary web development.
-      </p>
-      <p>
-        Introducing Tiptap AI as a native solution for seamless AI integration is simply the next natural progression.
-      </p>
-      <p>
-        Let’s have a look at how Tiptap AI is revolutionizing the text editing experience and taking it to new heights.
-      </p>
-    `,
-          }
-        : {}),
     },
-    [ydoc, provider, hasCollab],
+    [ydoc, provider],
   )
 
   const users = useMemo(() => {
@@ -127,16 +99,6 @@ export const useBlockEditor = ({
   }, [editor?.storage.collaborationCursor?.users])
 
   const characterCount = editor?.storage.characterCount || { characters: () => 0, words: () => 0 }
-
-  useEffect(() => {
-    if (collabState !== WebSocketStatus.Connected) {
-      editor?.setEditable(false)
-      return
-    }
-
-    editor?.setEditable(true)
-    return
-  }, [collabState, editor])
 
   useEffect(() => {
     provider?.on('status', (event: { status: WebSocketStatus }) => {

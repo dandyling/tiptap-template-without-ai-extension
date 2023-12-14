@@ -1,9 +1,9 @@
-import { BlockPickerOptions } from '@/components/toolbar/BlockPicker'
 import { Editor } from '@tiptap/react'
 import { useMemo } from 'react'
+import { ContentPickerOptions } from '../components/ContentTypePicker'
 
 export const useTextmenuContentTypes = (editor: Editor) => {
-  const options = useMemo<BlockPickerOptions>(() => {
+  const options = useMemo<ContentPickerOptions>(() => {
     return [
       {
         type: 'category',

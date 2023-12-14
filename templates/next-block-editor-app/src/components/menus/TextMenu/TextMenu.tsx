@@ -31,8 +31,6 @@ export const TextMenu = ({ editor }: TextMenuProps) => {
   const states = useTextmenuStates(editor)
   const blockOptions = useTextmenuContentTypes(editor)
 
-  const isVisible = states.shouldShow({ view: editor.view, from: editor.state.selection.from })
-
   return (
     <BubbleMenu
       tippyOptions={{ popperOptions: { placement: 'top-start' } }}

@@ -89,6 +89,8 @@ export const ExtensionKit = ({ provider, settings, userId, userName = 'Maxi' }: 
     heading: false,
     horizontalRule: false,
     blockquote: false,
+    history: false,
+    codeBlock: false,
   }),
   CodeBlockLowlight.configure({
     lowlight,
