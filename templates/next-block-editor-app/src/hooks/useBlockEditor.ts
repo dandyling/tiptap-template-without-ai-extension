@@ -13,6 +13,7 @@ import { userColors, userNames } from '../lib/constants'
 import { randomElement } from '../lib/utils'
 import { EditorUser } from '../components/BlockEditor/types'
 import { useSidebar } from './useSidebar'
+import { initialContent } from '@/lib/data/initialContent'
 
 const TIPTAP_AI_BASE_URL = process.env.NEXT_PUBLIC_TIPTAP_AI_BASE_URL
 
@@ -32,6 +33,13 @@ export const useBlockEditor = ({
   const editor = useEditor(
     {
       autofocus: true,
+      onCreate: ({ editor }) => {
+        provider?.on('synced', () => {
+          if (editor.isEmpty) {
+            editor.commands.setContent(initialContent)
+          }
+        })
+      },
       extensions: [
         ...ExtensionKit({
           provider,
