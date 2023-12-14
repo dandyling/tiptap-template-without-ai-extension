@@ -15,7 +15,7 @@
     }
 
     code {
-      @apply bg-none p-0 shadow-none;
+      @apply bg-inherit text-inherit p-0 shadow-none;
     }
 
     .hljs-comment,

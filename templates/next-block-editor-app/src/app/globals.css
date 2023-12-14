@@ -25,7 +25,7 @@ textarea::placeholder {
 
 input::-webkit-input-placeholder,
 textarea::-webkit-input-placeholder {
-  @apply text-black/40 dark:text-white/40;
+  @apply text-black/50 dark:text-white/40;
 }
 
 input::-moz-placeholder,

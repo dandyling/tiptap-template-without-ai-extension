@@ -52,7 +52,6 @@ import { TableOfContentNode } from './TableOfContentNode'
 import { lowlight } from 'lowlight'
 
 interface ExtensionKitProps {
-  usesCollaboration?: boolean
   provider?: HocuspocusProvider | null
   userId?: string
   userName?: string
@@ -60,13 +59,7 @@ interface ExtensionKitProps {
   settings?: any
 }
 
-export const ExtensionKit = ({
-  provider,
-  settings,
-  userId,
-  userName = 'Maxi',
-  usesCollaboration = false,
-}: ExtensionKitProps) => [
+export const ExtensionKit = ({ provider, settings, userId, userName = 'Maxi' }: ExtensionKitProps) => [
   Document,
   Columns,
   TaskList,
@@ -96,7 +89,6 @@ export const ExtensionKit = ({
     heading: false,
     horizontalRule: false,
     blockquote: false,
-    ...(usesCollaboration ? { history: false } : {}),
   }),
   CodeBlockLowlight.configure({
     lowlight,

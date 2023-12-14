@@ -1,7 +1,7 @@
 .ProseMirror {
   /* Placeholder Styles */
   .is-empty::before {
-    @apply float-left h-0 pointer-events-none w-full;
+    @apply text-black/40 dark:text-white/40 float-left h-0 pointer-events-none w-full;
   }
 
   &.ProseMirror-focused {
@@ -37,7 +37,7 @@
   /* Embed */
   .node-embedInput {
     &.is-empty [data-node-view-content] > :last-child::before {
-      @apply text-black/60 dark:text-white/60 float-left h-0 pointer-events-none;
+      @apply text-black/50 dark:text-white/50 float-left h-0 pointer-events-none;
     }
 
     &.is-empty [data-node-view-wrapper] [data-node-view-content] > :last-child::before {

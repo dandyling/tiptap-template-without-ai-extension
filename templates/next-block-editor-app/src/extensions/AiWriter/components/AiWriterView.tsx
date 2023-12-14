@@ -183,7 +183,7 @@ export const AiWriterView = ({ editor, node, getPos, deleteNode }: NodeViewWrapp
           <div className="flex flex-row items-center justify-between gap-1">
             <div className="flex justify-between w-auto gap-1">
               <Dropdown.Root>
-                <Dropdown.Trigger>
+                <Dropdown.Trigger asChild>
                   <Button variant="tertiary">
                     <Icon name="Mic" />
                     {currentTone?.label || 'Change tone'}

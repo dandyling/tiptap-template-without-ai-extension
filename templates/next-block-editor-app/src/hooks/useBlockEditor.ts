@@ -34,7 +34,6 @@ export const useBlockEditor = ({
       autofocus: true,
       extensions: [
         ...ExtensionKit({
-          usesCollaboration: hasCollab,
           provider,
         }),
         //

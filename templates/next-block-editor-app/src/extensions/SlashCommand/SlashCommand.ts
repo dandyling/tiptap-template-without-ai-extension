@@ -31,6 +31,7 @@ export const SlashCommand = Extension.create({
       maxWidth: '16rem',
       offset: [16, 8],
       popperOptions: {
+        strategy: 'fixed',
         modifiers: [
           {
             name: 'flip',
