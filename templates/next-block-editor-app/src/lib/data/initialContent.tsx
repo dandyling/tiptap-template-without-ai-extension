@@ -9,8 +9,14 @@ export const initialContent = {
       },
       content: [
         {
+          type: 'emoji',
+          attrs: {
+            name: 'fire',
+          },
+        },
+        {
           type: 'text',
-          text: 'Next.js + Tiptap Block Editor Template',
+          text: ' Next.js + Tiptap Block Editor Template 12',
         },
       ],
     },
@@ -78,6 +84,18 @@ export const initialContent = {
         {
           type: 'text',
           text: '. This project can be a good starting point for your own implementation of a block editor.',
+        },
+      ],
+    },
+    {
+      type: 'codeBlock',
+      attrs: {
+        language: null,
+      },
+      content: [
+        {
+          type: 'text',
+          text: "import { useEditor, EditorContent } from '@tiptap/react'\n\nfunction App() {\n  const editor = useEditor()\n\n  return <EditorContent editor={editor} />\n}",
         },
       ],
     },

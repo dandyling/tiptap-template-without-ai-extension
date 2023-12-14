@@ -106,5 +106,7 @@ export const useBlockEditor = ({
     })
   }, [provider])
 
+  window.editor = editor
+
   return { editor, users, characterCount, collabState, leftSidebar }
 }
