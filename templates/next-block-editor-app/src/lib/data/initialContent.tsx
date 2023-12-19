@@ -395,7 +395,7 @@ export const initialContent = {
         },
         {
           type: 'text',
-          text: ' If you're not already a member, sign up for an account and complete the 2-minute React Template survey. Once finished, we'll send you an invite to the private GitHub repository.',
+          text: ' If you are not already a member, sign up for an account and complete the 2-minute React Template survey. Once finished, we will send you an invite to the private GitHub repository.',
         },
       ],
     },
