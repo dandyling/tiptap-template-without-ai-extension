@@ -377,7 +377,7 @@ export const initialContent = {
       content: [
         {
           type: 'text',
-          text: 'Check out the ',
+          text: 'To access our block editor template, simply head over to your ',
         },
         {
           type: 'text',
@@ -385,17 +385,17 @@ export const initialContent = {
             {
               type: 'link',
               attrs: {
-                href: 'https://github.com/ueberdosis/tiptap-templates/blob/main/templates/next-block-editor-app/README.md',
+                href: 'https://cloud.tiptap.dev/react-templates',
                 target: '_blank',
                 class: null,
               },
             },
           ],
-          text: 'README',
+          text: 'Tiptap Account',
         },
         {
           type: 'text',
-          text: ' of this project to find out more about how to use this template in your project.',
+          text: ' If you're not already a member, sign up for an account and complete the 2-minute React Template survey. Once finished, we'll send you an invite to the private GitHub repository.',
         },
       ],
     },
