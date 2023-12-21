@@ -15,12 +15,15 @@ import { EditorUser } from '../components/BlockEditor/types'
 import { useSidebar } from './useSidebar'
 import { initialContent } from '@/lib/data/initialContent'
 
+const TIPTAP_AI_APP_ID = process.env.NEXT_PUBLIC_TIPTAP_AI_APP_ID
 const TIPTAP_AI_BASE_URL = process.env.NEXT_PUBLIC_TIPTAP_AI_BASE_URL
 
 export const useBlockEditor = ({
+  aiToken,
   ydoc,
   provider,
 }: {
+  aiToken: string
   ydoc: Y.Doc
   provider?: TiptapCollabProvider | null | undefined
 }) => {
@@ -53,9 +56,9 @@ export const useBlockEditor = ({
           },
         }),
         Ai.configure({
-          appId: 'APP_ID_HERE',
-          token: 'TOKEN_HERE',
-          baseUrl: TIPTAP_AI_BASE_URL,
+          appId: TIPTAP_AI_APP_ID,
+          token: aiToken,
+          baseUrl: TIPTAP_AI_BASE_URL || 'https://api.tiptap.dev/v1/ai',
           autocompletion: true,
           onLoading: () => {
             setIsAiLoading(true)

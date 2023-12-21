@@ -23,12 +23,12 @@ import { EditorHeader } from './components/EditorHeader'
 import { TextMenu } from '../menus/TextMenu'
 import { ContentItemMenu } from '../menus/ContentItemMenu'
 
-export const BlockEditor = ({ ydoc, provider }: TiptapProps) => {
+export const BlockEditor = ({ aiToken, ydoc, provider }: TiptapProps) => {
   const aiState = useAIState()
   const menuContainerRef = useRef(null)
   const editorRef = useRef<PureEditorContent | null>(null)
 
-  const { editor, users, characterCount, collabState, leftSidebar } = useBlockEditor({ ydoc, provider })
+  const { editor, users, characterCount, collabState, leftSidebar } = useBlockEditor({ aiToken, ydoc, provider })
 
   const displayedUsers = users.slice(0, 3)
 

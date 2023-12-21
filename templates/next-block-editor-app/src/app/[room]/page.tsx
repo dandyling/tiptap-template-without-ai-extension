@@ -46,7 +46,8 @@ const useDarkmode = () => {
 export default function Document({ params }: { params: { room: string } }) {
   const { isDarkMode, darkMode, lightMode } = useDarkmode()
   const [provider, setProvider] = useState<TiptapCollabProvider | null>(null)
-  const [token, setToken] = useState<string | null>(null)
+  const [collabToken, setCollabToken] = useState<string | null>(null)
+  const [aiToken, setAiToken] = useState<string | null>(null)
   const searchParams = useSearchParams()
 
   const hasCollab = parseInt(searchParams.get('noCollab') as string) !== 1
@@ -57,7 +58,7 @@ export default function Document({ params }: { params: { room: string } }) {
     // fetch data
     const dataFetch = async () => {
       const data = await (
-        await fetch('/api/collab-auth', {
+        await fetch('/api/collaboration', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -68,7 +69,28 @@ export default function Document({ params }: { params: { room: string } }) {
       const { token } = data
 
       // set state when the data received
-      setToken(token)
+      setCollabToken(token)
+    }
+
+    dataFetch()
+  }, [])
+
+  useEffect(() => {
+    // fetch data
+    const dataFetch = async () => {
+      const data = await (
+        await fetch('/api/ai', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        })
+      ).json()
+
+      const { token } = data
+
+      // set state when the data received
+      setAiToken(token)
     }
 
     dataFetch()
@@ -77,19 +99,19 @@ export default function Document({ params }: { params: { room: string } }) {
   const ydoc = useMemo(() => new Y.Doc(), [])
 
   useLayoutEffect(() => {
-    if (hasCollab && token) {
+    if (hasCollab && collabToken) {
       setProvider(
         new TiptapCollabProvider({
-          name: `${process.env.NEXT_PUBLIC_CLOUD_PREFIX}${room}`,
+          name: `${process.env.NEXT_PUBLIC_COLLAB_DOC_PREFIX}${room}`,
           appId: process.env.NEXT_PUBLIC_TIPTAP_COLLAB_APP_ID ?? '',
-          token,
+          token: collabToken,
           document: ydoc,
         }),
       )
     }
-  }, [setProvider, token, ydoc, room, hasCollab])
+  }, [setProvider, collabToken, ydoc, room, hasCollab])
 
-  if (hasCollab && (!token || !provider)) return
+  if ((hasCollab && (!collabToken || !provider)) || !aiToken) return
 
   const DarkModeSwitcher = createPortal(
     <Surface className="flex items-center gap-1 fixed bottom-6 right-6 z-[99999] p-1">
@@ -106,7 +128,7 @@ export default function Document({ params }: { params: { room: string } }) {
   return (
     <>
       {DarkModeSwitcher}
-      <BlockEditor hasCollab={hasCollab} ydoc={ydoc} provider={provider} />
+      <BlockEditor aiToken={aiToken} hasCollab={hasCollab} ydoc={ydoc} provider={provider} />
     </>
   )
 }

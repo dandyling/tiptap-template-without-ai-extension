@@ -3,6 +3,7 @@ import { Language } from '@tiptap-pro/extension-ai'
 import * as Y from 'yjs'
 
 export interface TiptapProps {
+  aiToken: string
   hasCollab: boolean
   ydoc: Y.Doc
   provider?: TiptapCollabProvider | null | undefined
