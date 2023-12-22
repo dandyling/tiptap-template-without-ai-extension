@@ -12,7 +12,6 @@ import {
   Color,
   Document,
   Dropcursor,
-  EmbedInput,
   Emoji,
   Figcaption,
   FileHandler,
@@ -56,10 +55,9 @@ interface ExtensionKitProps {
   userId?: string
   userName?: string
   userColor?: string
-  settings?: any
 }
 
-export const ExtensionKit = ({ provider, settings, userId, userName = 'Maxi' }: ExtensionKitProps) => [
+export const ExtensionKit = ({ provider, userId, userName = 'Maxi' }: ExtensionKitProps) => [
   Document,
   Columns,
   TaskList,
@@ -69,12 +67,10 @@ export const ExtensionKit = ({ provider, settings, userId, userName = 'Maxi' }: 
   AiWriter.configure({
     authorId: userId,
     authorName: userName,
-    enabled: settings && settings.ai_editor_requests > 0,
   }),
   AiImage.configure({
     authorId: userId,
     authorName: userName,
-    enabled: settings && settings.ai_editor_requests > 0,
   }),
   Column,
   Selection,
@@ -82,7 +78,6 @@ export const ExtensionKit = ({ provider, settings, userId, userName = 'Maxi' }: 
     levels: [1, 2, 3, 4, 5, 6],
   }),
   HorizontalRule,
-  EmbedInput,
   StarterKit.configure({
     document: false,
     dropcursor: false,
@@ -157,10 +152,7 @@ export const ExtensionKit = ({ provider, settings, userId, userName = 'Maxi' }: 
     showOnlyCurrent: false,
     placeholder: () => '',
   }),
-  SlashCommand.configure({
-    settings,
-  }),
-
+  SlashCommand,
   Focus,
   Figcaption,
   BlockquoteFigure,

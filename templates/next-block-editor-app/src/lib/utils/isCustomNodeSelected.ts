@@ -1,16 +1,6 @@
 import { Editor } from '@tiptap/react'
 
-import {
-  AiWriter,
-  AiImage,
-  EmbedInput,
-  Figcaption,
-  HorizontalRule,
-  ImageBlock,
-  ImageUpload,
-  Link,
-  CodeBlock,
-} from '@/extensions'
+import { AiWriter, AiImage, Figcaption, HorizontalRule, ImageBlock, ImageUpload, Link, CodeBlock } from '@/extensions'
 import { TableOfContentNode } from '@/extensions/TableOfContentNode'
 
 export const isTableGripSelected = (node: HTMLElement) => {
@@ -32,7 +22,6 @@ export const isTableGripSelected = (node: HTMLElement) => {
 
 export const isCustomNodeSelected = (editor: Editor, node: HTMLElement) => {
   const customNodes = [
-    EmbedInput.name,
     HorizontalRule.name,
     ImageBlock.name,
     ImageUpload.name,

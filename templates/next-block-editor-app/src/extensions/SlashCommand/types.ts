@@ -8,10 +8,6 @@ export interface Group {
   commands: Command[]
 }
 
-export interface GroupOptions {
-  settings: Settings
-}
-
 export interface Command {
   name: string
   label: string
@@ -19,8 +15,7 @@ export interface Command {
   aliases?: string[]
   iconName: keyof typeof icons
   action: (editor: Editor) => void
-  shouldBeHidden?: (editor: Editor, options?: GroupOptions) => boolean
-  isEnabled?: boolean
+  shouldBeHidden?: (editor: Editor) => boolean
 }
 
 export interface MenuListProps {

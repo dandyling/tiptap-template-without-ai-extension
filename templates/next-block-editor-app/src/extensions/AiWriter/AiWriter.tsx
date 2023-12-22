@@ -23,7 +23,6 @@ export const AiWriter = Node.create({
     return {
       authorId: undefined,
       authorName: undefined,
-      enabled: false,
       HTMLAttributes: {
         class: `node-${this.name}`,
       },

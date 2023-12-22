@@ -16,32 +16,6 @@ export const languages: LanguageOption[] = [
   { name: 'ukrainian', label: 'Ukrainian', value: 'ua' as LanguageOption['value'] },
 ]
 
-export const embeds = {
-  twitter: {
-    regex: /^https?:\/\/twitter\.com\/(?:#!\/)?(\w+)\/status(?:es)?\/(\d+)(?:\?|\/|$)(\S+)?$/i,
-  },
-  youtube: {
-    regex:
-      /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w-]+\?v=|embed\/|shorts\/|v\/)?)([\w-]+)(\S+)?$/i,
-  },
-  instagram: {
-    regex: /^https?:\/\/(?:www\.)?instagram\.com\/(?:p|reel|reels)\/([^/?#&]+)(\S+)?$/i,
-  },
-  tiktok: {
-    regex:
-      /^(https?:\/\/)?(?:(?:www)\.(?:tiktok\.com)(?:\/)(?!foryou)(@[a-zA-Z0-9_.]+)(?:\/)(?:video)(?:\/)([\d]+)|(?:m)\.(?:tiktok\.com)(?:\/)(?!foryou)(?:v)(?:\/)?(?=([\d]+)\.html)|vm\.tiktok\.com(?:\/)([\S]+)(?:\/))(\S+)?$/i,
-  },
-  generic: { regex: /^(http|https):\/\/[\w-]+(\.[\w-]+)+([\w.,@?^=%&amp;:/~+#-]*[\w@?^=%&amp;/~+#-])?/i },
-}
-
-export enum EmbedService {
-  YOUTUBE = 'youtube',
-  INSTAGRAM = 'instagram',
-  TWITTER = 'twitter',
-  FRAMER = 'framer',
-  FIGMA = 'figma',
-}
-
 export const tones: AiToneOption[] = [
   { name: 'academic', label: 'Academic', value: 'academic' },
   { name: 'business', label: 'Business', value: 'business' },

@@ -16,12 +16,6 @@ export const SlashCommand = Extension.create({
 
   priority: 200,
 
-  addOptions() {
-    return {
-      settings: {},
-    }
-  },
-
   onCreate() {
     popup = tippy('body', {
       interactive: true,
@@ -97,13 +91,7 @@ export const SlashCommand = Extension.create({
 
                 return labelNormalized.includes(queryNormalized)
               })
-              .filter(command =>
-                command.shouldBeHidden
-                  ? !command.shouldBeHidden(this.editor, {
-                      settings: this.options.settings,
-                    })
-                  : true,
-              ),
+              .filter(command => (command.shouldBeHidden ? !command.shouldBeHidden(this.editor) : true)),
           }))
 
           const withoutEmptyGroups = withFilteredCommands.filter(group => {

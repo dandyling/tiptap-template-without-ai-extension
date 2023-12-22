@@ -16,7 +16,7 @@ import { useSidebar } from './useSidebar'
 import { initialContent } from '@/lib/data/initialContent'
 
 const TIPTAP_AI_APP_ID = process.env.NEXT_PUBLIC_TIPTAP_AI_APP_ID
-const TIPTAP_AI_BASE_URL = process.env.NEXT_PUBLIC_TIPTAP_AI_BASE_URL
+const TIPTAP_AI_BASE_URL = process.env.NEXT_PUBLIC_TIPTAP_AI_BASE_URL || 'https://api.tiptap.dev/v1/ai'
 
 export const useBlockEditor = ({
   aiToken,
@@ -58,7 +58,7 @@ export const useBlockEditor = ({
         Ai.configure({
           appId: TIPTAP_AI_APP_ID,
           token: aiToken,
-          baseUrl: TIPTAP_AI_BASE_URL || 'https://api.tiptap.dev/v1/ai',
+          baseUrl: TIPTAP_AI_BASE_URL,
           autocompletion: true,
           onLoading: () => {
             setIsAiLoading(true)

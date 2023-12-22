@@ -1,4 +1,4 @@
-import { NodeViewWrapper, NodeViewWrapperProps } from '@tiptap/react'
+import { Extension, NodeViewWrapper, NodeViewWrapperProps } from '@tiptap/react'
 import { useCallback, useMemo, useState } from 'react'
 import toast from 'react-hot-toast'
 import { v4 as uuid } from 'uuid'
@@ -31,6 +31,8 @@ interface Data {
 }
 
 export const AiImageView = ({ editor, node, getPos, deleteNode }: NodeViewWrapperProps) => {
+  const aiOptions = editor.extensionManager.extensions.find((ext: Extension) => ext.name === 'ai').options
+
   const [data, setData] = useState<Data>({
     text: '',
     imageStyle: undefined,
@@ -55,11 +57,14 @@ export const AiImageView = ({ editor, node, getPos, deleteNode }: NodeViewWrappe
     }
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_TIPTAP_AI_BASE_URL}/image/prompt` || '', {
+      const { baseUrl, appId, token } = aiOptions
+      const response = await fetch(`${baseUrl}/image/prompt`, {
         method: 'POST',
         headers: {
           accept: 'application.json',
           'Content-Type': 'application/json',
+          'X-App-Id': appId.trim(),
+          Authorization: `Bearer ${token.trim()}`,
         },
         body: JSON.stringify(payload),
       })
@@ -81,7 +86,7 @@ export const AiImageView = ({ editor, node, getPos, deleteNode }: NodeViewWrappe
       setIsFetching(false)
       toast.error(message)
     }
-  }, [data])
+  }, [data, aiOptions])
 
   const insert = useCallback(() => {
     if (!previewImage?.length) {

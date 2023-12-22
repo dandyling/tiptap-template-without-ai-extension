@@ -1,5 +1,4 @@
 import { Group } from './types'
-import { EmbedService } from '../../../../lib/constants'
 
 export const GROUPS: Group[] = [
   {

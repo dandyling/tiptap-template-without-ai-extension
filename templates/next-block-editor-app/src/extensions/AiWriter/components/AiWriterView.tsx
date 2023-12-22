@@ -1,4 +1,4 @@
-import { NodeViewWrapper, NodeViewWrapperProps } from '@tiptap/react'
+import { Extension, NodeViewWrapper, NodeViewWrapperProps } from '@tiptap/react'
 import { useCallback, useMemo, useState } from 'react'
 import toast from 'react-hot-toast'
 import { v4 as uuid } from 'uuid'
@@ -27,6 +27,8 @@ export interface DataProps {
 }
 
 export const AiWriterView = ({ editor, node, getPos, deleteNode }: NodeViewWrapperProps) => {
+  const aiOptions = editor.extensionManager.extensions.find((ext: Extension) => ext.name === 'ai').options
+
   const [data, setData] = useState<DataProps>({
     text: '',
     tone: undefined,
@@ -60,49 +62,14 @@ export const AiWriterView = ({ editor, node, getPos, deleteNode }: NodeViewWrapp
     }
 
     try {
-      // TODO: Streaming
-      // const response = await fetch(`${process.env.NEXT_PUBLIC_TIPTAP_AI_BASE_URL}/text/complete?stream=1` || '', {
-      //   method: 'POST',
-      //   headers: {
-      //     accept: 'application/json',
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(payload),
-      // })
-
-      // const data = response?.body
-
-      // if (!data) {
-      //   return
-      // }
-
-      // const reader = data.getReader()
-      // const decoder: TextDecoder = new TextDecoder()
-      // let done = false
-      // let tokens: string = ''
-
-      // while (!done) {
-      //   const { value, done: doneReading } = await reader.read()
-      //   const decodedText = decoder.decode(value, { stream: true })
-
-      //   console.log(decodedText)
-
-      //   tokens += decodedText
-
-      //   setPreviewText(tokens)
-
-      //   done = doneReading
-      // }
-
-      // setIsFetching(!done)
-
-      // return
-
-      const response = await fetch(`${process.env.NEXT_PUBLIC_TIPTAP_AI_BASE_URL}/text/prompt` || '', {
+      const { baseUrl, appId, token } = aiOptions
+      const response = await fetch(`${baseUrl}/text/prompt`, {
         method: 'POST',
         headers: {
           accept: 'application.json',
           'Content-Type': 'application/json',
+          'X-App-Id': appId.trim(),
+          Authorization: `Bearer ${token.trim()}`,
         },
         body: JSON.stringify(payload),
       })
@@ -126,7 +93,7 @@ export const AiWriterView = ({ editor, node, getPos, deleteNode }: NodeViewWrapp
       setIsFetching(false)
       toast.error(message)
     }
-  }, [data])
+  }, [data, aiOptions])
 
   const insert = useCallback(() => {
     const from = getPos()

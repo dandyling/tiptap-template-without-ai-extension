@@ -33,39 +33,4 @@
   [data-placeholder][data-suggestion] *::before {
     content: none !important;
   }
-
-  /* Embed */
-  .node-embedInput {
-    &.is-empty [data-node-view-content] > :last-child::before {
-      @apply text-black/50 dark:text-white/50 float-left h-0 pointer-events-none;
-    }
-
-    &.is-empty [data-node-view-wrapper] [data-node-view-content] > :last-child::before {
-      content: 'Paste or type a URL';
-    }
-
-    &.is-empty [data-node-view-wrapper][data-service='twitter'] [data-node-view-content] > :last-child::before {
-      content: 'Paste or type a Twitter URL';
-    }
-
-    &.is-empty [data-node-view-wrapper][data-service='youtube'] [data-node-view-content] > :last-child::before {
-      content: 'Paste or type an Instagram URL';
-    }
-
-    &.is-empty [data-node-view-wrapper][data-service='tiktok'] [data-node-view-content] > :last-child::before {
-      content: 'Paste or type a Figma URL';
-    }
-
-    &.is-empty [data-node-view-wrapper][data-service='framer'] [data-node-view-content] > :last-child::before {
-      content: 'Paste or type a Framer URL';
-    }
-
-    &.is-empty [data-node-view-wrapper][data-service='figma'] [data-node-view-content] > :last-child::before {
-      content: 'Paste or type a Tiktok URL';
-    }
-
-    &.is-empty [data-node-view-wrapper][data-service='instagram'] [data-node-view-content] > :last-child::before {
-      content: 'Paste or type a YouTube URL';
-    }
-  }
 }
