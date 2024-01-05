@@ -71,7 +71,7 @@ export const AIDropdown = ({
             </DropdownButton>
           </Dropdown.Item>
           <Dropdown.Sub>
-            <Dropdown.SubTrigger asChild>
+            <Dropdown.SubTrigger>
               <DropdownButton>
                 <Icon name="Mic" />
                 Change tone
