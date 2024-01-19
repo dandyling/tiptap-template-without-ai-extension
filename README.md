@@ -1,31 +1,18 @@
 # Tiptap templates
-
-Ready to use Tiptap template projects for various usecases.
-
-## Table of contents
-
-- [Background](#background)
-- [How to use templates](#how-to-use-templates)
-- [Available templates](#available-templates)
-- [Maintainers](#maintainers)
-
-## Background
-
-Tiptap templates are a great way to get started with Tiptap. They are ready to use projects with all the necessary dependencies and configuration to get you started quickly.
+This repository provides exemplary UI templates for those looking to get a headstart with the Tiptap Editor in a React environment… Who said headless can't be helpful?
+With these templates, you can quickly bootstrap your project with a well-designed, functional user interface for your Tiptap Editor.
 
 ## How to use templates
 
-For now you will need to clone the repository and copy the template you want to use manually. Later we will introduce a CLI tool to make this process easier.
+Clone the repository and copy the template you want to use manually. For a list of all available templates see below.
 
-**This is an example on how it will work in the future**
+> [!Warning]
+> For users without access to Tiptap's paid Content AI features, you will need to remove or exclude the Content AI extensions from these templates. These templates are designed to showcase UI possibilities and should be adapted to fit your project's requirements and access to Tiptap features.
 
-```bash
-npm create tiptap-app --template next-block-editor-app --token YOUR_TIPTAP_TOKEN
-```
 
 ## Available templates
 
-- [next-block-editor-app](./templates/next-block-editor-app/README.md)
+- React Block Editor Template: [README](./templates/next-block-editor-app/README.md) | [DEMO](https://templates.tiptap.dev/)
 
 ## Maintainers
 
