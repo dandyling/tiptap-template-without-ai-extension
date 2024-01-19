@@ -6,7 +6,7 @@ With these templates, you can quickly bootstrap your project with a well-designe
 
 Clone the repository and copy the template you want to use manually. For a list of all available templates see below.
 
-> [!Warning]
+> [!Important]
 > For users without access to Tiptap's paid [Content AI](https://tiptap.dev/product/content-ai) features, you will need to remove or exclude the Content AI extensions from these templates. These templates are designed to showcase UI possibilities and should be adapted to fit your project's requirements and access to [Tiptap features](https://tiptap.dev/pricing).
 
 
