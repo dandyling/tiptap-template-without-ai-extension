@@ -1,6 +1,6 @@
 import { useContext, useEffect, useMemo, useState } from 'react'
 
-import { useEditor } from '@tiptap/react'
+import { Editor, useEditor } from '@tiptap/react'
 import Ai from '@tiptap-pro/extension-ai'
 import Collaboration from '@tiptap/extension-collaboration'
 import CollaborationCursor from '@tiptap/extension-collaboration-cursor'
@@ -17,6 +17,12 @@ import { initialContent } from '@/lib/data/initialContent'
 
 const TIPTAP_AI_APP_ID = process.env.NEXT_PUBLIC_TIPTAP_AI_APP_ID
 const TIPTAP_AI_BASE_URL = process.env.NEXT_PUBLIC_TIPTAP_AI_BASE_URL || 'https://api.tiptap.dev/v1/ai'
+
+declare global {
+  interface Window {
+    editor: Editor | null
+  }
+}
 
 export const useBlockEditor = ({
   aiToken,

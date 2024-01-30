@@ -30,7 +30,7 @@ import {
   Subscript,
   Superscript,
   Table,
-  TableOfContent,
+  TableOfContents,
   TableCell,
   TableHeader,
   TableRow,
@@ -47,7 +47,7 @@ import {
 } from '.'
 import { CodeBlockLowlight } from '@tiptap/extension-code-block-lowlight'
 import { ImageUpload } from './ImageUpload'
-import { TableOfContentNode } from './TableOfContentNode'
+import { TableOfContentsNode } from './TableOfContentsNode'
 import { lowlight } from 'lowlight'
 
 interface ExtensionKitProps {
@@ -102,8 +102,8 @@ export const ExtensionKit = ({ provider, userId, userName = 'Maxi' }: ExtensionK
   Highlight.configure({ multicolor: true }),
   Underline,
   CharacterCount.configure({ limit: 50000 }),
-  TableOfContent,
-  TableOfContentNode,
+  TableOfContents,
+  TableOfContentsNode,
   ImageUpload.configure({
     clientId: provider?.document?.clientID,
   }),

@@ -16,14 +16,14 @@ const TableOfNodeContent = (props: NodeViewRendererProps) => {
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
-    tableOfContentNode: {
-      insertTableOfContent: () => ReturnType
+    tableOfContentsNode: {
+      insertTableOfContents: () => ReturnType
     }
   }
 }
 
-export const TableOfContentNode = Node.create({
-  name: 'tableOfContentNode',
+export const TableOfContentsNode = Node.create({
+  name: 'tableOfContentsNode',
   group: 'block',
   atom: true,
   selectable: true,
@@ -48,7 +48,7 @@ export const TableOfContentNode = Node.create({
 
   addCommands() {
     return {
-      insertTableOfContent:
+      insertTableOfContents:
         () =>
         ({ commands }) => {
           return commands.insertContent({

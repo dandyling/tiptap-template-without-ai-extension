@@ -553,7 +553,7 @@ export const initialContent = {
               content: [
                 {
                   type: 'text',
-                  text: '@tiptap-pro/extension-table-of-content',
+                  text: '@tiptap-pro/extension-table-of-contents',
                 },
               ],
             },
